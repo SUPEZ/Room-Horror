@@ -198,7 +198,7 @@ namespace FunkyCode
 
 				Handles.DrawLine(point, nextPoint);
 
-				Vector3 result = Handles.FreeMoveHandle(point, Quaternion.identity, 0.05f * cameraSize, Vector2.zero, Handles.CylinderHandleCap);
+				var fmh_201_52_638860544041017568 = Quaternion.identity; Vector3 result = Handles.FreeMoveHandle(point, 0.05f * cameraSize, Vector2.zero, Handles.CylinderHandleCap);
 
 				if (point != result)
 				{
@@ -252,7 +252,7 @@ namespace FunkyCode
 			point.x += Mathf.Cos(rotation) * light2D.size;
 			point.y += Mathf.Sin(rotation) * light2D.size;
 			
-			Vector3 result = Handles.FreeMoveHandle(point, Quaternion.identity, 0.05f * cameraSize, Vector2.zero, Handles.CylinderHandleCap);
+			var fmh_255_51_638860544041037247 = Quaternion.identity; Vector3 result = Handles.FreeMoveHandle(point, 0.05f * cameraSize, Vector2.zero, Handles.CylinderHandleCap);
 
 			float moveDistance = Vector2.Distance(point, result);
 
@@ -295,7 +295,7 @@ namespace FunkyCode
 
 			Handles.color = new Color(1f, 0.5f, 0.5f);
 	
-			Vector3 innerHandle = Handles.FreeMoveHandle(innerPoint, Quaternion.identity, 0.05f * cameraSize, Vector2.zero, Handles.CylinderHandleCap);
+			var fmh_298_61_638860544041041984 = Quaternion.identity; Vector3 innerHandle = Handles.FreeMoveHandle(innerPoint, 0.05f * cameraSize, Vector2.zero, Handles.CylinderHandleCap);
 
 			if (Vector2.Distance(innerHandle, innerPoint) > 0.001f)
 			{
@@ -333,7 +333,7 @@ namespace FunkyCode
 
 				outerPointLeft.y += Mathf.Sin(rotation + outerValue) * light2D.size;
 
-				Vector3 outerHandleLeft = Handles.FreeMoveHandle(outerPointLeft, Quaternion.identity, 0.05f * cameraSize, Vector2.zero, Handles.CylinderHandleCap);
+				var fmh_336_70_638860544041046517 = Quaternion.identity; Vector3 outerHandleLeft = Handles.FreeMoveHandle(outerPointLeft, 0.05f * cameraSize, Vector2.zero, Handles.CylinderHandleCap);
 
 				float transformRotation = light2D.transform.rotation.eulerAngles.z;
 
@@ -359,7 +359,7 @@ namespace FunkyCode
 
 				outerPointRight.y += Mathf.Sin(rotation - outerValue) * light2D.size;
 
-				Vector3 outerHandleRight = Handles.FreeMoveHandle(outerPointRight, Quaternion.identity, 0.05f * cameraSize, Vector2.zero, Handles.CylinderHandleCap);
+				var fmh_362_72_638860544041049209 = Quaternion.identity; Vector3 outerHandleRight = Handles.FreeMoveHandle(outerPointRight, 0.05f * cameraSize, Vector2.zero, Handles.CylinderHandleCap);
 
 				if (Vector2.Distance(outerPointRight, outerHandleRight) > 0.01f)
 				{
