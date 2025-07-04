@@ -160,7 +160,7 @@ ScriptedImporter:
       y: 4
       width: 29
       height: 33
-    spriteID: 241d016e883465448905661b38156dfc
+    spriteID: 90bfb113e4b1b1c4bace6023fd152022
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -181,7 +181,7 @@ ScriptedImporter:
       y: 4
       width: 29
       height: 32
-    spriteID: 5f4769a8b20ad964ebd8b8840424fb11
+    spriteID: 365237eed46f1b348a26280b80091623
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -202,7 +202,7 @@ ScriptedImporter:
       y: 45
       width: 29
       height: 33
-    spriteID: 0248a8e5371df2c4193c6ffed67a7972
+    spriteID: 63cad95e94905c34b8dab8117b75c6de
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -224,8 +224,8 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 11
-        y: 8
+        x: 0
+        y: 0
         width: 29
         height: 32
       spriteId: 62facbb0a6d652c48a70f923a7132b1d
@@ -233,29 +233,29 @@ ScriptedImporter:
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 11
-        y: 8
+        x: 0
+        y: 0
         width: 29
         height: 33
-      spriteId: 241d016e883465448905661b38156dfc
+      spriteId: 90bfb113e4b1b1c4bace6023fd152022
     - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
-        x: 11
-        y: 8
+        x: 0
+        y: 0
         width: 29
         height: 32
-      spriteId: 5f4769a8b20ad964ebd8b8840424fb11
+      spriteId: 365237eed46f1b348a26280b80091623
     - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
-        x: 11
-        y: 8
+        x: 0
+        y: 0
         width: 29
         height: 33
-      spriteId: 0248a8e5371df2c4193c6ffed67a7972
+      spriteId: 63cad95e94905c34b8dab8117b75c6de
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -310,4 +310,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 48, y: 48}
+  canvasSize: {x: 29, y: 33}
