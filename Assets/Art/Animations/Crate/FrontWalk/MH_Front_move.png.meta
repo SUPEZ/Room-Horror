@@ -126,10 +126,10 @@ TextureImporter:
       name: MH_Front_move_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 8
+        x: 0
+        y: 0
         width: 31
-        height: 32
+        height: 34
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,8 +148,8 @@ TextureImporter:
       name: MH_Front_move_1
       rect:
         serializedVersion: 2
-        x: 57
-        y: 7
+        x: 31
+        y: 0
         width: 31
         height: 34
       alignment: 7
@@ -170,10 +170,10 @@ TextureImporter:
       name: MH_Front_move_2
       rect:
         serializedVersion: 2
-        x: 105
-        y: 8
-        width: 31
-        height: 32
+        x: 62
+        y: 0
+        width: 32
+        height: 34
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,12 +192,12 @@ TextureImporter:
       name: MH_Front_move_3
       rect:
         serializedVersion: 2
-        x: 153
-        y: 7
-        width: 31
+        x: 94
+        y: 0
+        width: 30
         height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -220,7 +220,9 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: 1aec24535a59155498f949251cb282a6, type: 3}
+      name: _NormalMap
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
