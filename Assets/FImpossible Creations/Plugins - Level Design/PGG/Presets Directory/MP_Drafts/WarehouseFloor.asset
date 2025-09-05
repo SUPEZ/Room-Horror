@@ -179,6 +179,62 @@ MonoBehaviour:
     _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
     _refCol: {fileID: 4724461349290602906, guid: d0c8bbf2cc4d0404499f12d07dc3e92e,
       type: 3}
+  - Prefab: {fileID: 8360462314092389405, guid: a01617427cd055b4ebc53a6d5136b023,
+      type: 3}
+    MainCollider: {fileID: 4724461349290602906, guid: a01617427cd055b4ebc53a6d5136b023,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+    _refCol: {fileID: 4724461349290602906, guid: a01617427cd055b4ebc53a6d5136b023,
+      type: 3}
+  - Prefab: {fileID: 8360462314092389405, guid: 75fb5011c84b83c4eb07088d84bb6359,
+      type: 3}
+    MainCollider: {fileID: 4724461349290602906, guid: 75fb5011c84b83c4eb07088d84bb6359,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+    _refCol: {fileID: 4724461349290602906, guid: 75fb5011c84b83c4eb07088d84bb6359,
+      type: 3}
+  - Prefab: {fileID: 8360462314092389405, guid: ae8e728ff6e239e4da10b55c0ec5e423,
+      type: 3}
+    MainCollider: {fileID: 4724461349290602906, guid: ae8e728ff6e239e4da10b55c0ec5e423,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+    _refCol: {fileID: 4724461349290602906, guid: ae8e728ff6e239e4da10b55c0ec5e423,
+      type: 3}
+  - Prefab: {fileID: 8360462314092389405, guid: 10e60df11754fa7438017bf8270ab524,
+      type: 3}
+    MainCollider: {fileID: 4724461349290602906, guid: 10e60df11754fa7438017bf8270ab524,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+    _refCol: {fileID: 4724461349290602906, guid: 10e60df11754fa7438017bf8270ab524,
+      type: 3}
+  - Prefab: {fileID: 8360462314092389405, guid: 92848044a4870d6489cbe808798a2a29,
+      type: 3}
+    MainCollider: {fileID: 4724461349290602906, guid: 92848044a4870d6489cbe808798a2a29,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+    _refCol: {fileID: 4724461349290602906, guid: 92848044a4870d6489cbe808798a2a29,
+      type: 3}
+  - Prefab: {fileID: 8360462314092389405, guid: 3bf2f248ffd34204282b041d6a40a8e3,
+      type: 3}
+    MainCollider: {fileID: 4724461349290602906, guid: 3bf2f248ffd34204282b041d6a40a8e3,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+    _refCol: {fileID: 4724461349290602906, guid: 3bf2f248ffd34204282b041d6a40a8e3,
+      type: 3}
+  - Prefab: {fileID: 8360462314092389405, guid: 14c77e2741ec09d489893636e2c21a8b,
+      type: 3}
+    MainCollider: {fileID: 4724461349290602906, guid: 14c77e2741ec09d489893636e2c21a8b,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+    _refCol: {fileID: 4724461349290602906, guid: 14c77e2741ec09d489893636e2c21a8b,
+      type: 3}
   DrawMultiObjectStamps: 1
   Spawners:
   - Enabled: 1
@@ -210,7 +266,7 @@ MonoBehaviour:
   _editor_drawGlobalRules: 0
   _editor_drawModPackRules: 0
   _editor_shareSelected: 0
-  ParentPreset: {fileID: 11400000, guid: fb6c6433edc70254d9bfecb3ae5633f5, type: 2}
+  ParentPreset: {fileID: 0}
   ParentPack: {fileID: 11400000}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -236,11 +292,11 @@ MonoBehaviour:
   Variables: []
   CallOnAllMod: {fileID: 9020320924406920759}
   CallOnAllSpawners:
-    Enabled: 0
+    Enabled: 1
     Name: 
     SpawnerTag: 
     StampPrefabID: 0
-    Parent: {fileID: 0}
+    Parent: {fileID: 9020320924406920759}
     Rules: []
     Mode: 0
     CellCheckMode: 0
