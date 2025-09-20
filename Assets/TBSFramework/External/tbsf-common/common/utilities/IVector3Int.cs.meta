@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 968d831035641284589aefaaea2127f0
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50282
+  packageName: Turn Based Strategy Framework
+  packageVersion: 4.0.1
+  assetPath: Assets/TBSFramework/External/tbsf-common/common/utilities/IVector3Int.cs
+  uploadId: 787664

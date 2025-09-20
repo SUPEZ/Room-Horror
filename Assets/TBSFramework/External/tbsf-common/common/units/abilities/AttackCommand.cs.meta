@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: a680e4005438e6d428e1facff9631cfb
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50282
+  packageName: Turn Based Strategy Framework
+  packageVersion: 4.0.1
+  assetPath: Assets/TBSFramework/External/tbsf-common/common/units/abilities/AttackCommand.cs
+  uploadId: 787664

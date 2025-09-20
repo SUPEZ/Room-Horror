@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 3cd4bf061a091f3418f4c534bd2470ef
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50282
+  packageName: Turn Based Strategy Framework
+  packageVersion: 4.0.1
+  assetPath: Assets/TBSFramework/External/tbsf-common/common/ai/evaluators/EnemyProximityPositionEvaluator.cs
+  uploadId: 787664

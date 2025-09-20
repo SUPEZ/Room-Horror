@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: dfba01b3a92e1754aaf4b6fc1629a18a
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50282
+  packageName: Turn Based Strategy Framework
+  packageVersion: 4.0.1
+  assetPath: Assets/TBSFramework/External/tbsf-common/common/ai/behaviourTrees/baseNodes/ITreeNode.cs
+  uploadId: 787664

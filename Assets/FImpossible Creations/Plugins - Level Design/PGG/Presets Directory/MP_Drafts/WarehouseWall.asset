@@ -24,12 +24,10 @@ MonoBehaviour:
   OMultiStamp: {fileID: 0}
   PrefabsList:
   - Prefab: {fileID: 174290506576614936, guid: a0f40e481bf83ed40bde1754e71dd9e3, type: 3}
-    MainCollider: {fileID: 6797608531207436652, guid: a0f40e481bf83ed40bde1754e71dd9e3,
-      type: 3}
+    MainCollider: {fileID: 6797608531207436652, guid: a0f40e481bf83ed40bde1754e71dd9e3, type: 3}
     subID: 0
     _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-    _refCol: {fileID: 6797608531207436652, guid: a0f40e481bf83ed40bde1754e71dd9e3,
-      type: 3}
+    _refCol: {fileID: 6797608531207436652, guid: a0f40e481bf83ed40bde1754e71dd9e3, type: 3}
   DrawMultiObjectStamps: 1
   Spawners:
   - Enabled: 1
@@ -61,7 +59,7 @@ MonoBehaviour:
   _editor_drawGlobalRules: 0
   _editor_drawModPackRules: 0
   _editor_shareSelected: 0
-  ParentPreset: {fileID: 11400000, guid: fb6c6433edc70254d9bfecb3ae5633f5, type: 2}
+  ParentPreset: {fileID: 0}
   ParentPack: {fileID: 11400000}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -82,7 +80,7 @@ MonoBehaviour:
   SeedMode: 0
   CustomSeed: 0
   ModPackType: 0
-  TagForAllSpawners: 
+  TagForAllSpawners: Wall
   CombineSpawns: 0
   Variables: []
   CallOnAllMod: {fileID: -182229968197497813}

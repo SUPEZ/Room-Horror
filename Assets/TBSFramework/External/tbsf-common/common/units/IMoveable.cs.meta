@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 768451af42177284886c576b1fccd269
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50282
+  packageName: Turn Based Strategy Framework
+  packageVersion: 4.0.1
+  assetPath: Assets/TBSFramework/External/tbsf-common/common/units/IMoveable.cs
+  uploadId: 787664

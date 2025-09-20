@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 4689ee44c7d57a948ad811f9c29b35b8
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50282
+  packageName: Turn Based Strategy Framework
+  packageVersion: 4.0.1
+  assetPath: Assets/TBSFramework/External/tbsf-common/common/ai/MobilityBasedUnitSelectorImpl.cs
+  uploadId: 787664

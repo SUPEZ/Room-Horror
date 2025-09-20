@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 4393ffb42a8f8f34a9bbfc0f7640686b
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50282
+  packageName: Turn Based Strategy Framework
+  packageVersion: 4.0.1
+  assetPath: Assets/TBSFramework/External/tbsf-common/common/players/IPlayer.cs
+  uploadId: 787664

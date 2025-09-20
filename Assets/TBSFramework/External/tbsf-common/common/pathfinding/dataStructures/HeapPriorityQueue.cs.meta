@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 21816fe4d949cbb4fb9aa49e81d09bb7
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50282
+  packageName: Turn Based Strategy Framework
+  packageVersion: 4.0.1
+  assetPath: Assets/TBSFramework/External/tbsf-common/common/pathfinding/dataStructures/HeapPriorityQueue.cs
+  uploadId: 787664

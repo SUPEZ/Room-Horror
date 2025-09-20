@@ -1,0 +1,110 @@
+﻿///////////////////////////////
+// Better Lit Shader
+// © Jason Booth, 2021
+///////////////////////////////
+
+BEGIN_OPTIONS
+   ShaderName "Hidden/Better Lit/Dev/StackableShapeEffector"  
+END_OPTIONS
+
+BEGIN_PROPERTIES
+	[Toggle(_EFFECTORENABLED)] _EnableEffectorSystem("Enable Effector", Float) = 0
+END_PROPERTIES
+
+BEGIN_DEFINES
+	#pragma shader_feature_local _ _EFFECTORENABLED
+	#define HASEFFECTOR 1
+END_DEFINES
+
+
+BEGIN_BLACKBOARD
+	half effectorWeight;
+END_BLACKBOARD
+
+
+BEGIN_CODE
+
+#if _EFFECTORENABLED
+    int        _EffectorCount;
+    float4x4   _EffectorMtx[8];       // Transformation matrices
+    float4x4   _EffectorInvMtx[8];    // Inverse transformation matrices (declare this)
+    float4     _EffectorData[8];      // Effector shape and contrast data
+
+float ProcessEffector(float3 worldPos, int i)
+{
+    float d = 0;
+
+    // Handle Sphere
+    if (_EffectorData[i].x == 1) // Sphere
+    {
+        float4x4 invMtx = _EffectorInvMtx[i];  // Use inverse matrix
+        float3 localPos = mul(invMtx, float4(worldPos, 1.0)).xyz;
+        d = length(localPos);
+        d = 1.0 - saturate(d);
+        d *= _EffectorData[i].y;
+    }
+    // Handle Cube (updated logic)
+    else if (_EffectorData[i].x == 2) // Cube
+    {
+        float4x4 invMtx = _EffectorInvMtx[i];  // Use inverse matrix
+
+        // Transform world position into the cube's local space
+        float3 localPos = mul(invMtx, float4(worldPos, 1.0)).xyz;
+
+        // Calculate distance to the closest point on the cube (bounding box)
+        float3 absLocalPos = abs(localPos); // Take absolute value for distance calculation
+        float3 boxSize = float3(1.0, 1.0, 1.0); // Cube's local size (half-dimensions)
+
+        // Calculate distance from the surface of the cube
+        float3 dist = max(absLocalPos - boxSize, 0.0);
+        d = length(dist);  // Distance to cube surface
+
+        // Invert the distance and clamp it
+        d = 1.0 - saturate(d);
+        d *= _EffectorData[i].y;  // Apply contrast
+    }
+    // Handle Plane (as before)
+    else
+    {
+        float3 rot = mul((float3x3)_EffectorMtx[i], float3(0, 0, 1));
+        float3 localPos = TransformWorldToObject(worldPos);
+        localPos -= mul(_EffectorMtx[i], float4(0, 0, 0, 1)).xyz;
+        d = dot(localPos, rot.xyz);
+        d = 1.0 - saturate(d * _EffectorData[i].y);
+    }
+
+    return saturate(d);
+}
+
+
+
+
+	float GetEffectorWeights(float3 worldPos)
+	{
+		float w = 0;
+		w = ProcessEffector(worldPos, 0);
+		for (int i = 1; i < _EffectorCount; ++i)
+		{
+			w = max(w, ProcessEffector(worldPos, i));
+		}
+
+		return w;
+	}
+#endif
+
+	void ModifyTessellatedVertex(inout VertexData v, inout ExtraV2F e)
+	{
+		#if _EFFECTORENABLED
+			e.blackboard.effectorWeight = GetEffectorWeights(ObjectToWorldSpacePosition(v.vertex.xyz));
+		#endif
+	}
+
+	void SurfaceFunction(inout Surface o, inout ShaderData d)
+	{
+		#if _EFFECTORENABLED
+			d.blackboard.effectorWeight = GetEffectorWeights(d.worldSpacePosition);
+		#endif
+	}
+
+END_CODE
+

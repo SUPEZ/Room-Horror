@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 7b2710b92f0656e408e152d2a71d71f6
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50282
+  packageName: Turn Based Strategy Framework
+  packageVersion: 4.0.1
+  assetPath: Assets/TBSFramework/External/tbsf-common/common/controllers/gridStates/GridStateGameEnded.cs
+  uploadId: 787664

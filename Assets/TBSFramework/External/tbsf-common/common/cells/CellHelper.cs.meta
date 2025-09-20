@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 885f6a0f7b338394c8dced6312497936
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50282
+  packageName: Turn Based Strategy Framework
+  packageVersion: 4.0.1
+  assetPath: Assets/TBSFramework/External/tbsf-common/common/cells/CellHelper.cs
+  uploadId: 787664

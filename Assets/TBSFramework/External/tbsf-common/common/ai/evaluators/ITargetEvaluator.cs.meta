@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: b1309c40d854e2642b6fa5919bcbda25
+AssetOrigin:
+  serializedVersion: 1
+  productId: 50282
+  packageName: Turn Based Strategy Framework
+  packageVersion: 4.0.1
+  assetPath: Assets/TBSFramework/External/tbsf-common/common/ai/evaluators/ITargetEvaluator.cs
+  uploadId: 787664

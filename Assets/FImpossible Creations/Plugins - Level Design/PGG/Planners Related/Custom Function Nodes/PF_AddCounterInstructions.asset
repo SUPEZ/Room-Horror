@@ -27,7 +27,8 @@ MonoBehaviour:
   _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
-  ParentNodesContainer: {fileID: 0}
+  ParentNodesContainer: {fileID: -1530348255840029544, guid: 1e7fb7cebcbad914c867e810cedfabad,
+    type: 2}
   _editor_drawRule: 1
   InputName: Instruction A ID
   InputType: 0
@@ -65,7 +66,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 475.08386
       width: 0
       height: 0
     PortType: 1
@@ -88,7 +89,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 977.4244
-      y: 502.08386
+      y: 475.08386
       width: 27
       height: 27
     PortType: 1
@@ -111,7 +112,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 475.08386
       width: 0
       height: 0
     PortType: 1
@@ -134,7 +135,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 475.08386
       width: 0
       height: 0
     PortType: 1
@@ -157,7 +158,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 475.08386
       width: 0
       height: 0
     PortType: 1
@@ -179,7 +180,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 475.08386
       width: 0
       height: 0
     PortType: 1
@@ -228,7 +229,8 @@ MonoBehaviour:
   _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
-  ParentNodesContainer: {fileID: 0}
+  ParentNodesContainer: {fileID: -1530348255840029544, guid: 1e7fb7cebcbad914c867e810cedfabad,
+    type: 2}
   _editor_drawRule: 1
   InputName: Cell B
   InputType: 5
@@ -239,7 +241,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 677.2575
       width: 0
       height: 0
     PortType: 1
@@ -262,7 +264,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 677.2575
       width: 0
       height: 0
     PortType: 1
@@ -284,8 +286,8 @@ MonoBehaviour:
     ParentNode: {fileID: -1437672458485055700}
     _E_LatestCorrectPortRect:
       serializedVersion: 2
-      x: 671.0472
-      y: 704.2575
+      x: 645.0472
+      y: 677.2575
       width: 27
       height: 27
     PortType: 1
@@ -308,7 +310,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 677.2575
       width: 0
       height: 0
     PortType: 1
@@ -331,7 +333,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 677.2575
       width: 0
       height: 0
     PortType: 1
@@ -384,7 +386,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 677.2575
       width: 0
       height: 0
     PortType: 1
@@ -433,7 +435,8 @@ MonoBehaviour:
   _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
-  ParentNodesContainer: {fileID: 0}
+  ParentNodesContainer: {fileID: -1530348255840029544, guid: 1e7fb7cebcbad914c867e810cedfabad,
+    type: 2}
   _editor_drawRule: 1
   InputName: Cell A
   InputType: 5
@@ -444,7 +447,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 425.29758
       width: 0
       height: 0
     PortType: 1
@@ -467,7 +470,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 425.29758
       width: 0
       height: 0
     PortType: 1
@@ -489,8 +492,8 @@ MonoBehaviour:
     ParentNode: {fileID: -187986687561197988}
     _E_LatestCorrectPortRect:
       serializedVersion: 2
-      x: 670.0747
-      y: 452.29758
+      x: 644.0747
+      y: 425.29758
       width: 27
       height: 27
     PortType: 1
@@ -513,7 +516,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 425.29758
       width: 0
       height: 0
     PortType: 1
@@ -536,7 +539,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 425.29758
       width: 0
       height: 0
     PortType: 1
@@ -589,7 +592,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 425.29758
       width: 0
       height: 0
     PortType: 1
@@ -638,7 +641,8 @@ MonoBehaviour:
   _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
-  ParentNodesContainer: {fileID: 0}
+  ParentNodesContainer: {fileID: -1530348255840029544, guid: 1e7fb7cebcbad914c867e810cedfabad,
+    type: 2}
   _editor_drawRule: 1
   In:
     ParentNodeID: -2147483640
@@ -668,7 +672,7 @@ MonoBehaviour:
     initialized: 0
     Variable:
       Name: None
-      v3Val: {x: 0, y: 0, z: 0}
+      v3Val: {x: -1, y: 0, z: 0.00000005418604}
       colVal: {r: 0, g: 0, b: 0, a: 0}
       str: 
       mat: {fileID: 0}
@@ -715,7 +719,7 @@ MonoBehaviour:
     initialized: 0
     Variable:
       Name: None
-      v3Val: {x: -0, y: -0, z: -0}
+      v3Val: {x: 1, y: -0, z: -0.00000005418604}
       colVal: {r: 0, g: 0, b: 0, a: 0}
       str: 
       mat: {fileID: 0}
@@ -763,12 +767,34 @@ MonoBehaviour:
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: 0}
   _editor_drawRule: 1
+  DisplayName: Add Counter Cell Instructions
+  DefaultFunctionsDirectory: {fileID: 102900000, guid: d7537c692f54e274e8b9f00a508a2eb5,
+    type: 3}
+  _customPath: Cells/Custom
+  _customTooltip: Adding contrary direction instructions in the cells. Useful for
+    doorways instructions generating
+  ScaleAdjustOffset: {x: 0, y: 0}
+  NodeColor: {r: 0.6251798, g: 0.9019608, b: 0.29803923, a: 1}
+  ProjectFileParent: {fileID: 0}
+  StartNode: {fileID: 0}
+  Rules:
+  - {fileID: -187986687561197988}
+  - {fileID: -1437672458485055700}
+  - {fileID: -2003270990364727927}
+  - {fileID: 3114657213928473170}
+  - {fileID: 4685608620216651025}
+  - {fileID: 8982230842163334613}
+  - {fileID: 7976036947992935004}
+  - {fileID: -164793714824103854}
+  - {fileID: 5072442775883540328}
+  Variables: []
+  Tex_Net: {fileID: 2800000, guid: c291ae28494aa9c468c136bec5345d74, type: 3}
   Port0:
-    Parent: {fileID: 0}
-    DisplayName: 
-    RootPortID: 0
-    RootPortHelpID: 0
-    ViewType: 0
+    Parent: {fileID: -187986687561197988}
+    DisplayName: Cell A
+    RootPortID: -2147483647
+    RootPortHelpID: -1
+    ViewType: 5
     PinType: 0
     p_Int:
       ParentNodeID: -1
@@ -865,20 +891,20 @@ MonoBehaviour:
     p_Cell:
       ParentNodeID: -1
       PortID: -1
-      ParentNode: {fileID: 0}
+      ParentNode: {fileID: 11400000}
       _E_LatestCorrectPortRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      PortType: 1
+      PortType: 0
       NameDisplayMode: 0
       ValueDisplayMode: 0
       SlotMode: 0
-      DisplayName: Port
+      DisplayName: Cell A
       OverwriteName: 
-      _HelperFunctionsID: -1
+      _HelperFunctionsID: -2147483647
       ConnectionDisplay: 0
       IsSendingSignals: 0
       portConnections: []
@@ -937,11 +963,11 @@ MonoBehaviour:
       initialized: 0
       StringVal: 
   Port1:
-    Parent: {fileID: 0}
-    DisplayName: 
-    RootPortID: 0
-    RootPortHelpID: 0
-    ViewType: 0
+    Parent: {fileID: -1437672458485055700}
+    DisplayName: Cell B
+    RootPortID: -2147483646
+    RootPortHelpID: -1
+    ViewType: 5
     PinType: 0
     p_Int:
       ParentNodeID: -1
@@ -1038,20 +1064,20 @@ MonoBehaviour:
     p_Cell:
       ParentNodeID: -1
       PortID: -1
-      ParentNode: {fileID: 0}
+      ParentNode: {fileID: 11400000}
       _E_LatestCorrectPortRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      PortType: 1
+      PortType: 0
       NameDisplayMode: 0
       ValueDisplayMode: 0
       SlotMode: 0
-      DisplayName: Port
+      DisplayName: Cell B
       OverwriteName: 
-      _HelperFunctionsID: -1
+      _HelperFunctionsID: -2147483646
       ConnectionDisplay: 0
       IsSendingSignals: 0
       portConnections: []
@@ -1110,29 +1136,29 @@ MonoBehaviour:
       initialized: 0
       StringVal: 
   Port2:
-    Parent: {fileID: 0}
-    DisplayName: 
-    RootPortID: 0
-    RootPortHelpID: 0
+    Parent: {fileID: -2003270990364727927}
+    DisplayName: Instruction A ID
+    RootPortID: -2147483645
+    RootPortHelpID: -1
     ViewType: 0
     PinType: 0
     p_Int:
       ParentNodeID: -1
       PortID: -1
-      ParentNode: {fileID: 0}
+      ParentNode: {fileID: 11400000}
       _E_LatestCorrectPortRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      PortType: 1
+      PortType: 0
       NameDisplayMode: 0
       ValueDisplayMode: 0
       SlotMode: 0
-      DisplayName: Port
+      DisplayName: Instruction A ID
       OverwriteName: 
-      _HelperFunctionsID: -1
+      _HelperFunctionsID: -2147483645
       ConnectionDisplay: 0
       IsSendingSignals: 0
       portConnections: []
@@ -1283,29 +1309,29 @@ MonoBehaviour:
       initialized: 0
       StringVal: 
   Port3:
-    Parent: {fileID: 0}
-    DisplayName: 
-    RootPortID: 0
-    RootPortHelpID: 0
+    Parent: {fileID: 3114657213928473170}
+    DisplayName: Instruction B ID
+    RootPortID: -2147483644
+    RootPortHelpID: -1
     ViewType: 0
     PinType: 0
     p_Int:
       ParentNodeID: -1
       PortID: -1
-      ParentNode: {fileID: 0}
+      ParentNode: {fileID: 11400000}
       _E_LatestCorrectPortRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      PortType: 1
+      PortType: 0
       NameDisplayMode: 0
       ValueDisplayMode: 0
       SlotMode: 0
-      DisplayName: Port
+      DisplayName: Instruction B ID
       OverwriteName: 
-      _HelperFunctionsID: -1
+      _HelperFunctionsID: -2147483644
       ConnectionDisplay: 0
       IsSendingSignals: 0
       portConnections: []
@@ -2493,29 +2519,7 @@ MonoBehaviour:
       initValueSet: 0
       initialized: 0
       StringVal: 
-  DisplayPorts: 0
-  DisplayName: Add Counter Cell Instructions
-  DefaultFunctionsDirectory: {fileID: 102900000, guid: d7537c692f54e274e8b9f00a508a2eb5,
-    type: 3}
-  _customPath: Cells/Custom
-  _customTooltip: Adding contrary direction instructions in the cells. Useful for
-    doorways instructions generating
-  ScaleAdjustOffset: {x: 0, y: 0}
-  NodeColor: {r: 0.6251798, g: 0.9019608, b: 0.29803923, a: 1}
-  ProjectFileParent: {fileID: 0}
-  StartNode: {fileID: 0}
-  Rules:
-  - {fileID: -187986687561197988}
-  - {fileID: -1437672458485055700}
-  - {fileID: -2003270990364727927}
-  - {fileID: 3114657213928473170}
-  - {fileID: 4685608620216651025}
-  - {fileID: 8982230842163334613}
-  - {fileID: 7976036947992935004}
-  - {fileID: -164793714824103854}
-  - {fileID: 5072442775883540328}
-  Variables: []
-  Tex_Net: {fileID: 2800000, guid: c291ae28494aa9c468c136bec5345d74, type: 3}
+  DisplayPorts: 4
 --- !u!114 &3114657213928473170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2543,7 +2547,8 @@ MonoBehaviour:
   _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
-  ParentNodesContainer: {fileID: 0}
+  ParentNodesContainer: {fileID: -1530348255840029544, guid: 1e7fb7cebcbad914c867e810cedfabad,
+    type: 2}
   _editor_drawRule: 1
   InputName: Instruction B ID
   InputType: 0
@@ -2581,7 +2586,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 687.60596
       width: 0
       height: 0
     PortType: 1
@@ -2604,7 +2609,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 1153.1029
-      y: 714.60596
+      y: 687.60596
       width: 27
       height: 27
     PortType: 1
@@ -2627,7 +2632,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 687.60596
       width: 0
       height: 0
     PortType: 1
@@ -2650,7 +2655,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 687.60596
       width: 0
       height: 0
     PortType: 1
@@ -2673,7 +2678,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 687.60596
       width: 0
       height: 0
     PortType: 1
@@ -2695,7 +2700,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 687.60596
       width: 0
       height: 0
     PortType: 1
@@ -2744,8 +2749,29 @@ MonoBehaviour:
   _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
-  ParentNodesContainer: {fileID: 0}
+  ParentNodesContainer: {fileID: -1530348255840029544, guid: 1e7fb7cebcbad914c867e810cedfabad,
+    type: 2}
   _editor_drawRule: 1
+  DisplayName: Cell Direction Towards
+  DefaultFunctionsDirectory: {fileID: 102900000, guid: d7537c692f54e274e8b9f00a508a2eb5,
+    type: 3}
+  _customPath: Cells/Custom
+  _customTooltip: Calculating direction from cell to cell
+  ScaleAdjustOffset: {x: 0, y: 0}
+  NodeColor: {r: 0.5970274, g: 0.9019608, b: 0.29803923, a: 1}
+  ProjectFileParent: {fileID: 11400000, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
+  StartNode: {fileID: 0}
+  Rules:
+  - {fileID: 2447593854290177853, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
+  - {fileID: 6822051087718826090, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
+  - {fileID: -6490786501130168470, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
+  - {fileID: 4534159689896351322, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
+  - {fileID: 8718985154797682481, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
+  - {fileID: -7941605765383065252, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
+  - {fileID: 763617633887041369, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
+  - {fileID: 4740736384280201961, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
+  Variables: []
+  Tex_Net: {fileID: 2800000, guid: c291ae28494aa9c468c136bec5345d74, type: 3}
   Port0:
     Parent: {fileID: 2447593854290177853, guid: 17051314497f6ea4c92bc7122b32d275,
       type: 2}
@@ -3208,7 +3234,7 @@ MonoBehaviour:
         isInput: 1
       initValueSet: 0
       initialized: 0
-      Value: {x: 0, y: 0, z: 0}
+      Value: {x: -1, y: 0, z: 0.00000005418604}
     p_Cell:
       ParentNodeID: -1
       PortID: -1
@@ -4497,26 +4523,6 @@ MonoBehaviour:
       initialized: 0
       StringVal: 
   DisplayPorts: 3
-  DisplayName: Cell Direction Towards
-  DefaultFunctionsDirectory: {fileID: 102900000, guid: d7537c692f54e274e8b9f00a508a2eb5,
-    type: 3}
-  _customPath: Cells/Custom
-  _customTooltip: 
-  ScaleAdjustOffset: {x: 0, y: 0}
-  NodeColor: {r: 0.29803923, g: 0.9019608, b: 0.43295467, a: 1}
-  ProjectFileParent: {fileID: 11400000, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
-  StartNode: {fileID: 0}
-  Rules:
-  - {fileID: 2447593854290177853, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
-  - {fileID: 6822051087718826090, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
-  - {fileID: -6490786501130168470, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
-  - {fileID: 4534159689896351322, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
-  - {fileID: 8718985154797682481, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
-  - {fileID: -7941605765383065252, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
-  - {fileID: 763617633887041369, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
-  - {fileID: 4740736384280201961, guid: 17051314497f6ea4c92bc7122b32d275, type: 2}
-  Variables: []
-  Tex_Net: {fileID: 2800000, guid: c291ae28494aa9c468c136bec5345d74, type: 3}
 --- !u!114 &5072442775883540328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4552,7 +4558,8 @@ MonoBehaviour:
   _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
-  ParentNodesContainer: {fileID: 0}
+  ParentNodesContainer: {fileID: -1530348255840029544, guid: 1e7fb7cebcbad914c867e810cedfabad,
+    type: 2}
   _editor_drawRule: 1
 --- !u!114 &7976036947992935004
 MonoBehaviour:
@@ -4576,7 +4583,7 @@ MonoBehaviour:
     ConnectionToID: -2147483641
     ConnectionFrom_AlternativeID: -1
     ConnectionTo_AlternativeID: -1
-  NodePosition: {x: 1393.3282, y: 583.40045}
+  NodePosition: {x: 1386.3282, y: 587.40045}
   NodeDrawOffset: {x: 0, y: 0}
   ResizedScale: {x: 200, y: 140}
   _EditorInContainedRange: []
@@ -4585,7 +4592,8 @@ MonoBehaviour:
   _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
-  ParentNodesContainer: {fileID: 0}
+  ParentNodesContainer: {fileID: -1530348255840029544, guid: 1e7fb7cebcbad914c867e810cedfabad,
+    type: 2}
   _editor_drawRule: 1
   Cell:
     ParentNodeID: -2147483641
@@ -4593,8 +4601,8 @@ MonoBehaviour:
     ParentNode: {fileID: 7976036947992935004}
     _E_LatestCorrectPortRect:
       serializedVersion: 2
-      x: 1416.3282
-      y: 619.40045
+      x: 1409.3282
+      y: 623.40045
       width: 27
       height: 27
     PortType: 0
@@ -4620,8 +4628,8 @@ MonoBehaviour:
     ParentNode: {fileID: 7976036947992935004}
     _E_LatestCorrectPortRect:
       serializedVersion: 2
-      x: 1416.3282
-      y: 639.40045
+      x: 1409.3282
+      y: 643.40045
       width: 27
       height: 27
     PortType: 0
@@ -4649,7 +4657,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 597.40045
       width: 0
       height: 0
     PortType: 0
@@ -4671,8 +4679,8 @@ MonoBehaviour:
     ParentNode: {fileID: 7976036947992935004}
     _E_LatestCorrectPortRect:
       serializedVersion: 2
-      x: 1416.3282
-      y: 659.40045
+      x: 1409.3282
+      y: 663.40045
       width: 27
       height: 27
     PortType: 0
@@ -4699,7 +4707,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 597.40045
       width: 0
       height: 0
     PortType: 0
@@ -4748,7 +4756,8 @@ MonoBehaviour:
   _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
-  ParentNodesContainer: {fileID: 0}
+  ParentNodesContainer: {fileID: -1530348255840029544, guid: 1e7fb7cebcbad914c867e810cedfabad,
+    type: 2}
   _editor_drawRule: 1
   Cell:
     ParentNodeID: -2147483642
@@ -4812,7 +4821,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 424.73364
       width: 0
       height: 0
     PortType: 0
@@ -4862,7 +4871,7 @@ MonoBehaviour:
     _E_LatestCorrectPortRect:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 424.73364
       width: 0
       height: 0
     PortType: 0

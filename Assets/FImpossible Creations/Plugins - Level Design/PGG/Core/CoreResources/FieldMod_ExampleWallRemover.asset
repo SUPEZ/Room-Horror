@@ -55,8 +55,7 @@ MonoBehaviour:
   _editor_drawModPackRules: 0
   _editor_shareSelected: 0
   ParentPreset: {fileID: 0}
-  ParentPack: {fileID: 6324579637144589045, guid: 12e73cd70f60cb04083024599008d4c5,
-    type: 2}
+  ParentPack: {fileID: 6324579637144589045, guid: 12e73cd70f60cb04083024599008d4c5, type: 2}
 --- !u!114 &4281270126315789958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +66,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d672d55056db764fa67b13fdb1cded5, type: 3}
-  m_Name: SR_RemoveInDirection-[FieldMod_Root]
+  m_Name: 'SR_RemoveInDirection-[FieldMod_Root]'
   m_EditorClassIdentifier: 
   Logic: 0
   Negate: 0
@@ -94,7 +93,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c3eb05acb0b93347af77c10c419406a, type: 3}
-  m_Name: SR_DirectionalRemove-[FieldMod_ExampleWallRemover]
+  m_Name: 'SR_DirectionalRemove-[FieldMod_ExampleWallRemover]'
   m_EditorClassIdentifier: 
   Logic: 0
   Negate: 0
@@ -106,10 +105,10 @@ MonoBehaviour:
   AllConditionsMet: 1
   replaceOnTag: Wall
   CheckMode: 0
-  LocalRemovePosition: {x: 0, y: 0.5, z: 0.5}
+  LocalRemovePosition: {x: 0, y: 0, z: 1}
   OffsetMode: 1
-  RemoveDistance: 0.5
-  DistanceSource: 2
+  RemoveDistance: 1
+  DistanceSource: 1
   ExecuteOnOffsettedCell: {x: 0, y: 0, z: 0}
   DrawDebugGizmos: 0
 --- !u!114 &8485558861163406329
@@ -122,7 +121,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b7b7d2eb85d19a4da49a85b81a1cb59, type: 3}
-  m_Name: SR_RemoveSpawn-[FieldMod_ExampleWallRemover]
+  m_Name: 'SR_RemoveSpawn-[FieldMod_ExampleWallRemover]'
   m_EditorClassIdentifier: 
   Logic: 0
   Negate: 0
@@ -146,6 +145,8 @@ MonoBehaviour:
       Rotor: 0
       UseCondition: 0
       Condition: 0
+      ExtraString: 
+      ExtraValue: 0
       ToCheck:
       - {x: 0, y: 0, z: 0}
       EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
