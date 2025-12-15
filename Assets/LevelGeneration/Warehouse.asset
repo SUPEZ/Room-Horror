@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
-  m_Name: FieldMod_WarehouseWallRemover
+  m_Name: FieldMod_xxxx
   m_EditorClassIdentifier: 
   TemporaryContainer: {fileID: 0}
   Enabled: 1
-  ModTag: Hole
+  ModTag: 
   DrawMeshAndBox: 0
   Combine: 0
   RunEmittersIfContains: 0
@@ -24,29 +24,7 @@ MonoBehaviour:
   OMultiStamp: {fileID: 0}
   PrefabsList: []
   DrawMultiObjectStamps: 1
-  Spawners:
-  - Enabled: 1
-    Name: Wall Remover
-    SpawnerTag: 
-    StampPrefabID: -2
-    Parent: {fileID: -8516793550214747843}
-    Rules:
-    - {fileID: -2813616483495026436}
-    Mode: 0
-    CellCheckMode: 0
-    _Editor_SpawnerAdvancedOptionsFoldout: 0
-    OnScalledGrid: 1
-    Repeat: 0
-    DontInheritRotations: 0
-    SwitchSpawnedToStatic: 0
-    MultipleToSpawn: 1
-    UseGlobalRules: 1
-    UseParentPackageRules: 1
-    _wasEnablingGlobalRules: 1
-    ScaleAccess: 1
-    DisplayPreviewGUI: 1
-    IsSubSpawner: 0
-    _EditorDisplaySpawnerHeader: 0
+  Spawners: []
   SubSpawners: []
   VariantOf: {fileID: 0}
   _editor_drawStamp: 1
@@ -95,34 +73,40 @@ MonoBehaviour:
       ToCheck:
       - {x: 0, y: 0, z: 0}
       EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
---- !u!114 &-2813616483495026436
+--- !u!114 &-2999477001644582424
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c3eb05acb0b93347af77c10c419406a, type: 3}
-  m_Name: 'SR_DirectionalRemove-[FieldMod_ExampleWallRemover]'
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Warehouse
   m_EditorClassIdentifier: 
-  Logic: 0
-  Negate: 0
-  Global: 0
+  TemporaryContainer: {fileID: 0}
   Enabled: 1
-  Ignore: 0
-  _editor_drawRule: 1
-  CellAllow: 1
-  AllConditionsMet: 1
-  replaceOnTag: Wall
-  CheckMode: 0
-  LocalRemovePosition: {x: 0, y: 0, z: 0}
-  OffsetMode: 1
-  RemoveDistance: 1
-  DistanceSource: 0
-  ExecuteOnOffsettedCell: {x: 0, y: 0, z: 0}
-  DrawDebugGizmos: 0
+  ModTag: 
+  DrawMeshAndBox: 0
+  Combine: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList: []
+  DrawMultiObjectStamps: 1
+  Spawners: []
+  SubSpawners: []
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_drawGlobalRules: 0
+  _editor_drawModPackRules: 0
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: 3530312800913530165}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +117,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b6c361108247f045b5087f48c0c7951, type: 3}
-  m_Name: WareHouseMainFieldSetup
+  m_Name: Warehouse
   m_EditorClassIdentifier: 
   CellSize: 1
   NonUniformSize: 1
@@ -199,22 +183,17 @@ MonoBehaviour:
     Foldout: 1
     extraMod: {fileID: 0}
     extraPack: {fileID: 0}
-  - Title: Prevent Wall Spawn
-    InstructionType: 5
-    TargetModification: {fileID: 0}
-    Tags: Wall
-    InstructionArgument: 
-    Foldout: 1
-    extraMod: {fileID: 0}
-    extraPack: {fileID: 0}
   RootPack: {fileID: 3530312800913530165}
   UtilityModificators:
   - {fileID: 5187157646886726579}
   - {fileID: -8516793550214747843}
+  - {fileID: 6600022125512850291}
+  - {fileID: -2999477001644582424}
   ModificatorPacks:
   - {fileID: 3530312800913530165}
   - {fileID: 11400000, guid: 50923cf9cc26b954eaff6794ec05302b, type: 2}
   - {fileID: 11400000, guid: d3f3cf50363f1cc448321375fc8fd441, type: 2}
+  - {fileID: 11400000, guid: ddca1ee17460f8a44ab4fe84216bc629, type: 2}
   Ignores: []
   DontSpawnOn: 
   SelfInjections: []
@@ -238,40 +217,6 @@ MonoBehaviour:
     GenerateRelations: 1
     GroupUpToSize: 8
     MaxGroupDistance: 8
---- !u!114 &3222013325328109174
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TemporaryContainer: {fileID: 0}
-  Enabled: 1
-  ModTag: 
-  DrawMeshAndBox: 0
-  Combine: 0
-  RunEmittersIfContains: 0
-  DrawSetupFor: 0
-  OStamp: {fileID: 0}
-  DrawObjectStamps: 1
-  OMultiStamp: {fileID: 0}
-  PrefabsList: []
-  DrawMultiObjectStamps: 1
-  Spawners: []
-  SubSpawners: []
-  VariantOf: {fileID: 0}
-  _editor_drawStamp: 1
-  _editor_drawSpawners: 1
-  _editor_drawGlobalRules: 0
-  _editor_drawModPackRules: 0
-  _editor_shareSelected: 0
-  ParentPreset: {fileID: 11400000}
-  ParentPack: {fileID: 3530312800913530165}
 --- !u!114 &3530312800913530165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,9 +238,9 @@ MonoBehaviour:
   TagForAllSpawners: 
   CombineSpawns: 0
   Variables: []
-  CallOnAllMod: {fileID: 3222013325328109174}
+  CallOnAllMod: {fileID: -2999477001644582424}
   CallOnAllSpawners:
-    Enabled: 0
+    Enabled: 1
     Name: 
     SpawnerTag: 
     StampPrefabID: 0
@@ -331,7 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TemporaryContainer: {fileID: 0}
   Enabled: 1
-  ModTag: Hole
+  ModTag: Doorway
   DrawMeshAndBox: 0
   Combine: 0
   RunEmittersIfContains: 0
@@ -376,7 +321,7 @@ MonoBehaviour:
   _editor_drawGlobalRules: 0
   _editor_drawModPackRules: 0
   _editor_shareSelected: 0
-  ParentPreset: {fileID: 0}
+  ParentPreset: {fileID: 11400000}
   ParentPack: {fileID: 3530312800913530165}
 --- !u!114 &6600022125512850291
 MonoBehaviour:
@@ -432,7 +377,7 @@ MonoBehaviour:
   _editor_drawGlobalRules: 0
   _editor_drawModPackRules: 0
   _editor_shareSelected: 0
-  ParentPreset: {fileID: 0}
+  ParentPreset: {fileID: 11400000}
   ParentPack: {fileID: 3530312800913530165}
 --- !u!114 &7990613553929780366
 MonoBehaviour:
@@ -462,4 +407,4 @@ MonoBehaviour:
   RemoveDistance: 0.1
   DistanceSource: 0
   DebugDirection: 0
-  DrawDebugGizmos: 0
+  DrawDebugGizmos: 1
