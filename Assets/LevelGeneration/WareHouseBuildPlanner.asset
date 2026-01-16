@@ -1959,7 +1959,7 @@ MonoBehaviour:
     - {fileID: 1855032313542131712}
   AsyncGenerating: 0
   Operations: []
-  _Editor_OperationsFoldout: 1
+  _Editor_OperationsFoldout: 0
 --- !u!114 &1152973026201663411
 MonoBehaviour:
   m_ObjectHideFlags: 1

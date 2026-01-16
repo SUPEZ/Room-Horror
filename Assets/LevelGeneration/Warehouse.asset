@@ -244,7 +244,7 @@ MonoBehaviour:
     Name: 
     SpawnerTag: 
     StampPrefabID: 0
-    Parent: {fileID: 0}
+    Parent: {fileID: -2999477001644582424}
     Rules: []
     Mode: 0
     CellCheckMode: 0
@@ -321,7 +321,7 @@ MonoBehaviour:
   _editor_drawGlobalRules: 0
   _editor_drawModPackRules: 0
   _editor_shareSelected: 0
-  ParentPreset: {fileID: 11400000}
+  ParentPreset: {fileID: 0}
   ParentPack: {fileID: 3530312800913530165}
 --- !u!114 &6600022125512850291
 MonoBehaviour:
@@ -377,7 +377,7 @@ MonoBehaviour:
   _editor_drawGlobalRules: 0
   _editor_drawModPackRules: 0
   _editor_shareSelected: 0
-  ParentPreset: {fileID: 11400000}
+  ParentPreset: {fileID: 0}
   ParentPack: {fileID: 3530312800913530165}
 --- !u!114 &7990613553929780366
 MonoBehaviour:
