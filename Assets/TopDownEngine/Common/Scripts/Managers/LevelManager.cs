@@ -19,6 +19,9 @@ namespace MoreMountains.TopDownEngine
 		/// the prefab you want for your player
 		[Header("Instantiate Characters")]
 		[MMInformation("The LevelManager is responsible for handling spawn/respawn, checkpoints management and level bounds. Here you can define one or more playable characters for your level..",MMInformationAttribute.InformationType.Info,false)]
+		/// disable character spawning (for free camera mode)
+		[Tooltip("If true, characters won't spawn automatically (useful for free camera exploration mode)")]
+		public bool DisableCharacterSpawn = false;
 		/// should the player IDs be auto attributed (usually yes)
 		[Tooltip("should the player IDs be auto attributed (usually yes)")]
 		public bool AutoAttributePlayerIDs = true;
@@ -148,14 +151,28 @@ namespace MoreMountains.TopDownEngine
 
 			BoundsCollider = _collider;
 			BoundsCollider2D = _collider2D;
-			InstantiatePlayableCharacters();
+			
+			// Skip character instantiation if disabled
+			if (!DisableCharacterSpawn)
+			{
+				InstantiatePlayableCharacters();
+			}
 
 			if (UseLevelBounds)
 			{
 				MMCameraEvent.Trigger(MMCameraEventTypes.SetConfiner, null, BoundsCollider, BoundsCollider2D);
 			}            
             
-			if (Players == null || Players.Count == 0) { yield break; }
+			// Skip character-related initialization if no players
+			if (DisableCharacterSpawn || Players == null || Players.Count == 0) 
+			{ 
+				Initialization();
+				MMFadeOutEvent.Trigger(IntroFadeDuration, FadeCurve, FaderID);
+				TopDownEngineEvent.Trigger(TopDownEngineEventTypes.LevelStart, null);
+				MMGameEvent.Trigger("Load");
+				MMGameEvent.Trigger("CameraBound");
+				yield break; 
+			}
 
 			Initialization();
 

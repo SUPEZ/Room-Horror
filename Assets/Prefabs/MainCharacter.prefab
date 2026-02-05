@@ -107,7 +107,7 @@ SortingGroup:
   m_GameObject: {fileID: 56247416449777532}
   m_Enabled: 1
   m_SortingLayerID: 47421343
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!61 &921019003806886807
@@ -186,13 +186,13 @@ MonoBehaviour:
   OverHole: 0
   GroundLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   HoleLayerMask:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 0
   ObstaclesLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
 --- !u!114 &6499787717919145279
 MonoBehaviour:
   m_ObjectHideFlags: 0

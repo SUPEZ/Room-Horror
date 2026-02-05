@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9202191893386868277}
   - component: {fileID: 7598379425885033290}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WarehouseWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 8576054668732555093}
   - component: {fileID: 2014702021325843387}
   - component: {fileID: 3463344373449780475}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallPerp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2129837078543422335}
   - component: {fileID: 9139502313403467092}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 49204667870035292}
   - component: {fileID: 5623654954457150834}
   - component: {fileID: 5614766861320862090}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallNoPerp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

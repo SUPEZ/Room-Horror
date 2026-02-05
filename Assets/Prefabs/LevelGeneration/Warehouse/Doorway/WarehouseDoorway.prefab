@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 344807024228530824}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PivotZNoPerp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 296019185348800658}
   - component: {fileID: 7073335379281644405}
   - component: {fileID: 8850954661807323510}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 8264131334307998539}
   - component: {fileID: 98747158999291559}
   - component: {fileID: 7260953268188739942}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -727,7 +727,7 @@ GameObject:
   - component: {fileID: 5664311886016493990}
   - component: {fileID: 8256146130282321546}
   - component: {fileID: 1068740796294771298}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Spot Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 7345016736042328456}
   - component: {fileID: 2133657988237010930}
   - component: {fileID: 3250047864483618586}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -958,7 +958,7 @@ GameObject:
   - component: {fileID: 8432704457250761236}
   - component: {fileID: 3266202590531297907}
   - component: {fileID: 3976685185997030051}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1064,7 +1064,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5183930679951658359}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PivotZNoPerp (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1101,7 +1101,7 @@ GameObject:
   - component: {fileID: 5205401950411391888}
   - component: {fileID: 6188249483404783931}
   - component: {fileID: 7864079906343269429}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1208,7 +1208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4258334156865370823}
   - component: {fileID: 3580781133928299899}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WarehouseDoorway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1262,7 +1262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1186693375554569666}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PivotZPerp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1299,7 +1299,7 @@ GameObject:
   - component: {fileID: 5301244717463970773}
   - component: {fileID: 6800383907542826319}
   - component: {fileID: 1037692183181901848}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1408,7 +1408,7 @@ GameObject:
   - component: {fileID: 6722952870432682110}
   - component: {fileID: 313607649879216235}
   - component: {fileID: 4702120615663748959}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1517,7 +1517,7 @@ GameObject:
   - component: {fileID: 1802180404465457761}
   - component: {fileID: 5024108519304895764}
   - component: {fileID: 6533598052711518121}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1625,7 +1625,7 @@ GameObject:
   - component: {fileID: 8686399109929452279}
   - component: {fileID: 5420159307812124896}
   - component: {fileID: 4823920227020339632}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1747,7 +1747,7 @@ GameObject:
   - component: {fileID: 5380425524489681298}
   - component: {fileID: 8557301140358285731}
   - component: {fileID: 7044927606695035798}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1856,7 +1856,7 @@ GameObject:
   - component: {fileID: 1632449414241878307}
   - component: {fileID: 1659044919792688971}
   - component: {fileID: 3288877398118779807}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
