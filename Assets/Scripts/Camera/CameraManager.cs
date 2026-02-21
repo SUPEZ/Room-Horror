@@ -2,10 +2,11 @@ using UnityEngine;
 using MoreMountains.TopDownEngine;
 using MoreMountains.Tools;
 using UnityEngine.InputSystem;
+using GameModes;
 
 /// <summary>
 /// Camera Manager - controls two camera modes:
-/// 1. Free Camera - camera follows invisible target object controlled by WASD/Mouse
+/// 1. Free Camera - camera follows invisible target object controlled by WASD/Mouse + State Machine for game modes
 /// 2. Character Mode - camera follows player character controlled by TopDown Engine
 /// Switch modes with F4
 /// </summary>
@@ -39,6 +40,10 @@ public class CameraManager : MMSingleton<CameraManager>
     [Tooltip("Main camera (auto-detected if null)")]
     public Camera mainCamera;
 
+    [Header("State Machine")]
+    [Tooltip("Free Camera State Machine (auto-created if null)")]
+    public FreeCameraStateMachine stateMachine;
+
     // Current state
     public CameraMode CurrentMode { get; private set; }
     public bool IsFreeCameraActive => CurrentMode == CameraMode.FreeCamera;
@@ -50,6 +55,11 @@ public class CameraManager : MMSingleton<CameraManager>
     private bool _hasBounds;
     private Vector3 _lastMousePosition;
     private bool _isDragging;
+
+    // Game mode components
+    private ManipulatorMode _manipulatorMode;
+    private BuilderMode _builderMode;
+    private BulldozerMode _bulldozerMode;
 
     // Enums
     public enum CameraMode
@@ -64,6 +74,8 @@ public class CameraManager : MMSingleton<CameraManager>
         InitializeCamera();
         CreateInvisibleTarget();
         UpdateBounds();
+        InitializeStateMachine();
+        InitializeGameModes();
     }
 
     private void Start()
@@ -178,6 +190,85 @@ public class CameraManager : MMSingleton<CameraManager>
             _hasBounds = false;
             Debug.LogWarning("[CameraManager] No bounds detected - camera movement unlimited");
         }
+    }
+
+    /// <summary>
+    /// Initialize State Machine for Free Camera mode
+    /// </summary>
+    private void InitializeStateMachine()
+    {
+        if (stateMachine == null)
+        {
+            stateMachine = gameObject.AddComponent<FreeCameraStateMachine>();
+        }
+
+        // Subscribe to state changes
+        stateMachine.OnStateChanged += OnFreeCameraStateChanged;
+        
+        // Disable initially
+        stateMachine.Disable();
+        
+        Debug.Log("[CameraManager] State Machine initialized");
+    }
+
+    /// <summary>
+    /// Initialize Game Mode components
+    /// </summary>
+    private void InitializeGameModes()
+    {
+        // Add game mode components
+        _manipulatorMode = gameObject.GetComponent<ManipulatorMode>();
+        if (_manipulatorMode == null)
+        {
+            _manipulatorMode = gameObject.AddComponent<ManipulatorMode>();
+        }
+        _manipulatorMode.enabled = false;
+
+        _builderMode = gameObject.GetComponent<BuilderMode>();
+        if (_builderMode == null)
+        {
+            _builderMode = gameObject.AddComponent<BuilderMode>();
+        }
+        _builderMode.enabled = false;
+
+        _bulldozerMode = gameObject.GetComponent<BulldozerMode>();
+        if (_bulldozerMode == null)
+        {
+            _bulldozerMode = gameObject.AddComponent<BulldozerMode>();
+        }
+        _bulldozerMode.enabled = false;
+
+        Debug.Log("[CameraManager] Game Modes initialized");
+    }
+
+    /// <summary>
+    /// Handle free camera state changes
+    /// </summary>
+    private void OnFreeCameraStateChanged(FreeCameraStateMachine.FreeCameraState previousState, FreeCameraStateMachine.FreeCameraState newState)
+    {
+        // Disable all game modes first
+        if (_manipulatorMode != null) _manipulatorMode.enabled = false;
+        if (_builderMode != null) _builderMode.enabled = false;
+        if (_bulldozerMode != null) _bulldozerMode.enabled = false;
+
+        // Enable the appropriate game mode
+        switch (newState)
+        {
+            case FreeCameraStateMachine.FreeCameraState.Manipulator:
+                if (_manipulatorMode != null) _manipulatorMode.enabled = true;
+                break;
+            case FreeCameraStateMachine.FreeCameraState.Builder:
+                if (_builderMode != null) _builderMode.enabled = true;
+                break;
+            case FreeCameraStateMachine.FreeCameraState.Bulldozer:
+                if (_bulldozerMode != null) _bulldozerMode.enabled = true;
+                break;
+            case FreeCameraStateMachine.FreeCameraState.None:
+                // All modes disabled
+                break;
+        }
+
+        Debug.Log($"[CameraManager] Game Mode changed to: {newState}");
     }
 
     /// <summary>
@@ -328,6 +419,12 @@ public class CameraManager : MMSingleton<CameraManager>
             _invisibleTarget.transform.position = new Vector3(camPos.x, _invisibleTarget.transform.position.y, camPos.z);
         }
 
+        // Enable State Machine
+        if (stateMachine != null)
+        {
+            stateMachine.Enable();
+        }
+
         // Stop camera following character
         MMCameraEvent.Trigger(MMCameraEventTypes.StopFollowing);
 
@@ -368,6 +465,12 @@ public class CameraManager : MMSingleton<CameraManager>
     /// </summary>
     private void EnableCharacterMode()
     {
+        // Disable State Machine
+        if (stateMachine != null)
+        {
+            stateMachine.Disable();
+        }
+
         // Enable character input
         if (LevelManager.HasInstance && LevelManager.Instance.Players != null && LevelManager.Instance.Players.Count > 0)
         {
