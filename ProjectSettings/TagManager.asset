@@ -5,17 +5,18 @@ TagManager:
   serializedVersion: 3
   tags:
   - Grid
+  - NPC
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - PostProcessing
   - Obstacle
   - Character
-  - 
+  - NPC
   - 
   - 
   - 

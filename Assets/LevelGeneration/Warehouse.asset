@@ -193,7 +193,6 @@ MonoBehaviour:
   - {fileID: 3530312800913530165}
   - {fileID: 11400000, guid: 50923cf9cc26b954eaff6794ec05302b, type: 2}
   - {fileID: 11400000, guid: d3f3cf50363f1cc448321375fc8fd441, type: 2}
-  - {fileID: 11400000, guid: ddca1ee17460f8a44ab4fe84216bc629, type: 2}
   Ignores: []
   DontSpawnOn: 
   SelfInjections: []

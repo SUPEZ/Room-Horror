@@ -539,6 +539,8 @@ MonoBehaviour:
   ObstaclesCheckFrequency: 1
   MinimumRandomDirection: {x: -1, y: -1}
   MaximumRandomDirection: {x: 1, y: 1}
+  DebugHitObstacle: 0
+  TargetCollider: {fileID: 0}
 --- !u!114 &9087221442082358632
 MonoBehaviour:
   m_ObjectHideFlags: 0

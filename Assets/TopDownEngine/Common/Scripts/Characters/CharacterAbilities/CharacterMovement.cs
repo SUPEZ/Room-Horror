@@ -4,57 +4,66 @@ using MoreMountains.Tools;
 using System.Collections.Generic;
 
 namespace MoreMountains.TopDownEngine
-{	
+{
 	/// <summary>
 	/// Add this ability to a Character to have it handle ground movement (walk, and potentially run, crawl, etc) in x and z direction for 3D, x and y for 2D
 	/// Animator parameters : Speed (float), Walking (bool)
 	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Movement")] 
-	public class CharacterMovement : CharacterAbility 
+	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Movement")]
+	public class CharacterMovement : CharacterAbility
 	{
 		/// the possible rotation modes for the character
-		public enum Movements { Free, Strict2DirectionsHorizontal, Strict2DirectionsVertical, Strict4Directions, Strict8Directions }
+		public enum Movements
+		{
+			Free,
+			Strict2DirectionsHorizontal,
+			Strict2DirectionsVertical,
+			Strict4Directions,
+			Strict8Directions
+		}
 
 		/// the current reference movement speed
 		public virtual float MovementSpeed { get; set; }
+
 		/// if this is true, movement will be forbidden (as well as flip)
 		public virtual bool MovementForbidden { get; set; }
 
 		[Header("Direction")]
-
 		/// whether the character can move freely, in 2D only, in 4 or 8 cardinal directions
 		[Tooltip("whether the character can move freely, in 2D only, in 4 or 8 cardinal directions")]
 		public Movements Movement = Movements.Free;
 
 		[Header("Settings")]
-
 		/// whether or not movement input is authorized at that time
 		[Tooltip("whether or not movement input is authorized at that time")]
 		public bool InputAuthorized = true;
+
 		/// whether or not input should be analog
 		[Tooltip("whether or not input should be analog")]
 		public bool AnalogInput = false;
+
 		/// whether or not input should be set from another script
 		[Tooltip("whether or not input should be set from another script")]
 		public bool ScriptDrivenInput = false;
 
 		[Header("Speed")]
-
 		/// the speed of the character when it's walking
 		[Tooltip("the speed of the character when it's walking")]
 		public float WalkSpeed = 6f;
+
 		/// whether or not this component should set the controller's movement
 		[Tooltip("whether or not this component should set the controller's movement")]
 		public bool ShouldSetMovement = true;
+
 		/// the speed threshold after which the character is not considered idle anymore
 		[Tooltip("the speed threshold after which the character is not considered idle anymore")]
 		public float IdleThreshold = 0.05f;
 
 		[Header("Acceleration")]
-
 		/// the acceleration to apply to the current speed / 0f : no acceleration, instant full speed
 		[Tooltip("the acceleration to apply to the current speed / 0f : no acceleration, instant full speed")]
 		public float Acceleration = 10f;
+
 		/// the deceleration to apply to the current speed / 0f : no deceleration, instant stop
 		[Tooltip("the deceleration to apply to the current speed / 0f : no deceleration, instant stop")]
 		public float Deceleration = 10f;
@@ -62,16 +71,20 @@ namespace MoreMountains.TopDownEngine
 		/// whether or not to interpolate movement speed
 		[Tooltip("whether or not to interpolate movement speed")]
 		public bool InterpolateMovementSpeed = false;
+
 		public virtual float MovementSpeedMaxMultiplier { get; set; } = float.MaxValue;
 		private float _movementSpeedMultiplier;
+
 		/// the multiplier to apply to the horizontal movement
 		public float MovementSpeedMultiplier
 		{
 			get => Mathf.Min(_movementSpeedMultiplier, MovementSpeedMaxMultiplier);
 			set => _movementSpeedMultiplier = value;
 		}
+
 		/// the multiplier to apply to the horizontal movement, applied by contextual elements (movement zones, etc)
 		public Stack<float> ContextSpeedStack = new Stack<float>();
+
 		public virtual float ContextSpeedMultiplier => ContextSpeedStack.Count > 0 ? ContextSpeedStack.Peek() : 1;
 
 		[Header("Walk Feedback")]
@@ -83,6 +96,7 @@ namespace MoreMountains.TopDownEngine
 		/// the particles to trigger when touching the ground
 		[Tooltip("the particles to trigger when touching the ground")]
 		public ParticleSystem[] TouchTheGroundParticles;
+
 		/// the sfx to trigger when touching the ground
 		[Tooltip("the sfx to trigger when touching the ground")]
 		public AudioClip[] TouchTheGroundSfx;
@@ -109,25 +123,27 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		protected override void Initialization()
 		{
-			base.Initialization ();
+			base.Initialization();
 			ResetAbility();
 		}
 
 		/// <summary>
 		/// Resets character movement states and speeds
 		/// </summary>
-        public override void ResetAbility()
-        {
-	        base.ResetAbility();
+		public override void ResetAbility()
+		{
+			base.ResetAbility();
 			MovementSpeed = WalkSpeed;
 			if (ContextSpeedStack != null)
 			{
 				ContextSpeedStack.Clear();
 			}
+
 			if ((_movement != null) && (_movement.CurrentState != CharacterStates.MovementStates.FallingDownHole))
 			{
 				_movement.ChangeState(CharacterStates.MovementStates.Idle);
 			}
+
 			MovementSpeedMultiplier = 1f;
 			MovementForbidden = false;
 
@@ -136,16 +152,17 @@ namespace MoreMountains.TopDownEngine
 				if (system != null)
 				{
 					system.Stop();
-				}				
+				}
 			}
+
 			foreach (ParticleSystem system in WalkParticles)
 			{
 				if (system != null)
 				{
 					system.Stop();
-				}				
+				}
 			}
-		} 
+		}
 
 		/// <summary>
 		/// The second of the 3 passes you can have in your ability. Think of it as Update()
@@ -153,21 +170,24 @@ namespace MoreMountains.TopDownEngine
 		public override void ProcessAbility()
 		{
 			base.ProcessAbility();
-			
+
 			HandleFrozen();
-			
+
 			if (!AbilityAuthorized
-			    || ((_condition.CurrentState != CharacterStates.CharacterConditions.Normal) && (_condition.CurrentState != CharacterStates.CharacterConditions.ControlledMovement)))
+			    || ((_condition.CurrentState != CharacterStates.CharacterConditions.Normal) &&
+			        (_condition.CurrentState != CharacterStates.CharacterConditions.ControlledMovement)))
 			{
 				if (AbilityAuthorized)
 				{
 					StopAbilityUsedSfx();
 				}
+
 				return;
 			}
+
 			HandleDirection();
 			HandleMovement();
-			Feedbacks ();
+			Feedbacks();
 		}
 
 		/// <summary>
@@ -190,7 +210,7 @@ namespace MoreMountains.TopDownEngine
 			{
 				_horizontalMovement = 0f;
 				_verticalMovement = 0f;
-			}	
+			}
 		}
 
 		/// <summary>
@@ -201,6 +221,19 @@ namespace MoreMountains.TopDownEngine
 		{
 			_horizontalMovement = value.x;
 			_verticalMovement = value.y;
+		}
+
+		/// <summary>
+		/// Instantly stops the character's movement, completely ignoring deceleration.
+		/// </summary>
+		public virtual void StopMovementInstantly()
+		{
+			_currentInput = Vector2.zero;
+			_lerpedInput = Vector2.zero;
+			_horizontalMovement = 0f;
+			_verticalMovement = 0f;
+			_acceleration = 0f;
+			_movementVector = Vector3.zero;
 		}
 
 		/// <summary>
@@ -220,7 +253,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			_verticalMovement = value;
 		}
-		
+
 		/// <summary>
 		/// Applies a movement multiplier for the specified duration
 		/// </summary>
@@ -230,7 +263,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			StartCoroutine(ApplyMovementMultiplierCo(movementMultiplier, duration));
 		}
-		
+
 		/// <summary>
 		/// A coroutine used to apply a movement multiplier for a certain duration only
 		/// </summary>
@@ -243,6 +276,7 @@ namespace MoreMountains.TopDownEngine
 			{
 				yield break;
 			}
+
 			SetContextSpeedMultiplier(movementMultiplier);
 			yield return MMCoroutine.WaitFor(duration);
 			ResetContextSpeedMultiplier();
@@ -266,7 +300,7 @@ namespace MoreMountains.TopDownEngine
 			{
 				return;
 			}
-			
+
 			ContextSpeedStack.Pop();
 		}
 
@@ -295,6 +329,7 @@ namespace MoreMountains.TopDownEngine
 					{
 						_horizontalMovement = 0f;
 					}
+
 					break;
 				case Movements.Strict8Directions:
 					_verticalMovement = Mathf.Round(_verticalMovement);
@@ -326,12 +361,12 @@ namespace MoreMountains.TopDownEngine
 			}
 
 			// if movement is prevented, or if the character is dead/frozen/can't move, we exit and do nothing
-			if ( !AbilityAuthorized
-			     || (_condition.CurrentState != CharacterStates.CharacterConditions.Normal) )
+			if (!AbilityAuthorized
+			    || (_condition.CurrentState != CharacterStates.CharacterConditions.Normal))
 			{
-				return;				
+				return;
 			}
-            
+
 			CheckJustGotGrounded();
 
 			if (MovementForbidden)
@@ -356,18 +391,18 @@ namespace MoreMountains.TopDownEngine
 				_movement.ChangeState(CharacterStates.MovementStates.Idle);
 			}
 
-			if ( _controller.Grounded
-			     && (_controller.CurrentMovement.magnitude > IdleThreshold)
-			     && ( _movement.CurrentState == CharacterStates.MovementStates.Idle))
-			{				
-				_movement.ChangeState(CharacterStates.MovementStates.Walking);	
-				PlayAbilityStartSfx();	
+			if (_controller.Grounded
+			    && (_controller.CurrentMovement.magnitude > IdleThreshold)
+			    && (_movement.CurrentState == CharacterStates.MovementStates.Idle))
+			{
+				_movement.ChangeState(CharacterStates.MovementStates.Walking);
+				PlayAbilityStartSfx();
 				PlayAbilityUsedSfx();
 				PlayAbilityStartFeedbacks();
 			}
-            
+
 			// if we're walking and not moving anymore, we go back to the Idle state
-			if ((_movement.CurrentState == CharacterStates.MovementStates.Walking) 
+			if ((_movement.CurrentState == CharacterStates.MovementStates.Walking)
 			    && (_controller.CurrentMovement.magnitude <= IdleThreshold))
 			{
 				_movement.ChangeState(CharacterStates.MovementStates.Idle);
@@ -377,7 +412,7 @@ namespace MoreMountains.TopDownEngine
 
 			if (ShouldSetMovement)
 			{
-				SetMovement ();	
+				SetMovement();
 			}
 		}
 
@@ -390,6 +425,7 @@ namespace MoreMountains.TopDownEngine
 			{
 				return;
 			}
+
 			if (_condition.CurrentState == CharacterStates.CharacterConditions.Frozen)
 			{
 				_horizontalMovement = 0f;
@@ -408,11 +444,11 @@ namespace MoreMountains.TopDownEngine
 
 			_currentInput.x = _horizontalMovement;
 			_currentInput.y = _verticalMovement;
-            
+
 			_normalizedInput = _currentInput.normalized;
 
 			float interpolationSpeed = 1f;
-            
+
 			if ((Acceleration == 0) || (Deceleration == 0))
 			{
 				_lerpedInput = AnalogInput ? _currentInput : _normalizedInput;
@@ -428,18 +464,21 @@ namespace MoreMountains.TopDownEngine
 				else
 				{
 					_acceleration = Mathf.Lerp(_acceleration, 1f, Acceleration * Time.deltaTime);
-					_lerpedInput = AnalogInput ? Vector2.ClampMagnitude (_currentInput, _acceleration) : Vector2.ClampMagnitude(_normalizedInput, _acceleration);
+					_lerpedInput = AnalogInput
+						? Vector2.ClampMagnitude(_currentInput, _acceleration)
+						: Vector2.ClampMagnitude(_normalizedInput, _acceleration);
 					interpolationSpeed = Acceleration;
 				}
-			}		
-			
+			}
+
 			_movementVector.x = _lerpedInput.x;
 			_movementVector.y = 0f;
 			_movementVector.z = _lerpedInput.y;
 
 			if (InterpolateMovementSpeed)
 			{
-				_movementSpeed = Mathf.Lerp(_movementSpeed, MovementSpeed * ContextSpeedMultiplier * MovementSpeedMultiplier, interpolationSpeed * Time.deltaTime);
+				_movementSpeed = Mathf.Lerp(_movementSpeed, MovementSpeed * ContextSpeedMultiplier * MovementSpeedMultiplier,
+					interpolationSpeed * Time.deltaTime);
 			}
 			else
 			{
@@ -457,9 +496,9 @@ namespace MoreMountains.TopDownEngine
 			{
 				_movementVector = Vector3.zero;
 			}
-            
-			_controller.SetMovement (_movementVector);
-		} 
+
+			_controller.SetMovement(_movementVector);
+		}
 
 		/// <summary>
 		/// Every frame, checks if we just hit the ground, and if yes, changes the state and triggers a particle effect
@@ -476,28 +515,29 @@ namespace MoreMountains.TopDownEngine
 		/// <summary>
 		/// Plays particles when walking, and particles and sounds when landing
 		/// </summary>
-		protected virtual void Feedbacks ()
+		protected virtual void Feedbacks()
 		{
 			if (_controller.Grounded)
 			{
-				if (_controller.CurrentMovement.magnitude > IdleThreshold)	
-				{			
+				if (_controller.CurrentMovement.magnitude > IdleThreshold)
+				{
 					foreach (ParticleSystem system in WalkParticles)
-					{				
+					{
 						if (!_walkParticlesPlaying && (system != null))
 						{
-							system.Play();		
+							system.Play();
 						}
+
 						_walkParticlesPlaying = true;
-					}	
+					}
 				}
 				else
 				{
 					foreach (ParticleSystem system in WalkParticles)
-					{						
+					{
 						if (_walkParticlesPlaying && (system != null))
 						{
-							system.Stop();		
+							system.Stop();
 							_walkParticlesPlaying = false;
 						}
 					}
@@ -506,10 +546,10 @@ namespace MoreMountains.TopDownEngine
 			else
 			{
 				foreach (ParticleSystem system in WalkParticles)
-				{						
+				{
 					if (_walkParticlesPlaying && (system != null))
 					{
-						system.Stop();		
+						system.Stop();
 						_walkParticlesPlaying = false;
 					}
 				}
@@ -523,8 +563,9 @@ namespace MoreMountains.TopDownEngine
 					{
 						system.Clear();
 						system.Play();
-					}					
+					}
 				}
+
 				foreach (AudioClip clip in TouchTheGroundSfx)
 				{
 					MMSoundManagerSoundPlayEvent.Trigger(clip, MMSoundManager.MMSoundManagerTracks.Sfx, this.transform.position);
@@ -577,7 +618,7 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		protected override void OnDisable()
 		{
-			base.OnDisable ();
+			base.OnDisable();
 			DisableWalkParticles();
 			PlayAbilityStopSfx();
 			PlayAbilityStopFeedbacks();
@@ -589,9 +630,12 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		protected override void InitializeAnimatorParameters()
 		{
-			RegisterAnimatorParameter (_speedAnimationParameterName, AnimatorControllerParameterType.Float, out _speedAnimationParameter);
-			RegisterAnimatorParameter (_walkingAnimationParameterName, AnimatorControllerParameterType.Bool, out _walkingAnimationParameter);
-			RegisterAnimatorParameter (_idleAnimationParameterName, AnimatorControllerParameterType.Bool, out _idleAnimationParameter);
+			RegisterAnimatorParameter(_speedAnimationParameterName, AnimatorControllerParameterType.Float,
+				out _speedAnimationParameter);
+			RegisterAnimatorParameter(_walkingAnimationParameterName, AnimatorControllerParameterType.Bool,
+				out _walkingAnimationParameter);
+			RegisterAnimatorParameter(_idleAnimationParameterName, AnimatorControllerParameterType.Bool,
+				out _idleAnimationParameter);
 		}
 
 		/// <summary>
@@ -599,9 +643,15 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		public override void UpdateAnimator()
 		{
-			MMAnimatorExtensions.UpdateAnimatorFloat(_animator, _speedAnimationParameter, Mathf.Abs(_controller.CurrentMovement.magnitude),_character._animatorParameters, _character.RunAnimatorSanityChecks);
-			MMAnimatorExtensions.UpdateAnimatorBool(_animator, _walkingAnimationParameter, (_movement.CurrentState == CharacterStates.MovementStates.Walking),_character._animatorParameters, _character.RunAnimatorSanityChecks);
-			MMAnimatorExtensions.UpdateAnimatorBool(_animator, _idleAnimationParameter, (_movement.CurrentState == CharacterStates.MovementStates.Idle),_character._animatorParameters, _character.RunAnimatorSanityChecks);
+			MMAnimatorExtensions.UpdateAnimatorFloat(_animator, _speedAnimationParameter,
+				Mathf.Abs(_controller.CurrentMovement.magnitude), _character._animatorParameters,
+				_character.RunAnimatorSanityChecks);
+			MMAnimatorExtensions.UpdateAnimatorBool(_animator, _walkingAnimationParameter,
+				(_movement.CurrentState == CharacterStates.MovementStates.Walking), _character._animatorParameters,
+				_character.RunAnimatorSanityChecks);
+			MMAnimatorExtensions.UpdateAnimatorBool(_animator, _idleAnimationParameter,
+				(_movement.CurrentState == CharacterStates.MovementStates.Idle), _character._animatorParameters,
+				_character.RunAnimatorSanityChecks);
 		}
 	}
 }

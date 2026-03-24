@@ -16,7 +16,7 @@ namespace FIMSpace.Generating.Planning.GeneratingLogics
 
         public override CheckerField3D GetChecker( FieldPlanner planner )
         {
-            CheckerField3D checker = GetTunnel( null, null, BranchLength.GetRandom(), BranchThickness.GetRandom() );
+            CheckerField3D checker = GetInitialTunnel( BranchLength.GetRandom(), BranchThickness.GetRandom() );
             CheckerField3D initTunnel = checker.Copy();
 
             List<CheckerField3D> tunnels = new List<CheckerField3D>();

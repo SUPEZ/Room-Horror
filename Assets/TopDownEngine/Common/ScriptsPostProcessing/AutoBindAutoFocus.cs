@@ -16,7 +16,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			AutoFocus = FindAnyObjectByType<MMAutoFocus>();
 		}
-        
+
 		public virtual void OnMMEvent(MMCameraEvent cameraEvent)
 		{
 			switch (cameraEvent.EventType)
@@ -29,17 +29,22 @@ namespace MoreMountains.TopDownEngine
 					break;
 			}
 		}
-		
+
 		protected virtual void AutoBindAutoFocusToCamera()
 		{
 			if (AutoFocus == null)
 			{
 				AutoFocus = FindAnyObjectByType<MMAutoFocus>();
 			}
+
 			if (AutoFocus != null)
 			{
-				AutoFocus.FocusTargets = new Transform[1];
-				AutoFocus.FocusTargets[0] = LevelManager.Instance.Players[0].transform; 
+				if (LevelManager.Instance != null && LevelManager.Instance.Players != null &&
+				    LevelManager.Instance.Players.Count > 0)
+				{
+					AutoFocus.FocusTargets = new Transform[1];
+					AutoFocus.FocusTargets[0] = LevelManager.Instance.Players[0].transform;
+				}
 			}
 		}
 

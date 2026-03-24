@@ -17,39 +17,60 @@ namespace MoreMountains.TopDownEngine
 		/// the maximum time a character can spend going in a direction without changing
 		[Tooltip("the maximum time a character can spend going in a direction without changing")]
 		public float MaximumDurationInADirection = 2f;
+
 		[Header("Obstacles")]
 		/// the layers the character will try to avoid
 		[Tooltip("the layers the character will try to avoid")]
 		public LayerMask ObstacleLayerMask = LayerManager.ObstaclesLayerMask;
+
 		/// the minimum distance from the target this Character can reach.
 		[Tooltip("the minimum distance from the target this Character can reach.")]
 		public float ObstaclesDetectionDistance = 1f;
+
 		/// the frequency (in seconds) at which to check for obstacles
 		[Tooltip("the frequency (in seconds) at which to check for obstacles")]
 		public float ObstaclesCheckFrequency = 1f;
+
 		/// the minimal random direction to randomize from
 		[Tooltip("the minimal random direction to randomize from")]
 		public Vector2 MinimumRandomDirection = new Vector2(-1f, -1f);
+
 		/// the maximum random direction to randomize from
 		[Tooltip("the maximum random direction to randomize from")]
 		public Vector2 MaximumRandomDirection = new Vector2(1f, 1f);
 
+		[Header("Debug")]
+		/// true if an obstacle was hit on the last check
+		[Tooltip("true if an obstacle was hit on the last check")]
+		[MMReadOnly]
+		public bool DebugHitObstacle = false;
+
 		protected CharacterMovement _characterMovement;
 		protected Vector2 _direction;
-		protected Collider _collider;
+
+		[Header("Collider")]
+		/// The collider used for obstacle detection, to be assigned in the inspector
+		[Tooltip("The collider used for obstacle detection, to be assigned in the inspector")]
+		public Collider TargetCollider;
+
 		protected float _lastObstacleDetectionTimestamp = 0f;
 		protected float _lastDirectionChangeTimestamp = 0f;
 		protected Vector3 _rayDirection;
-                
+
+		protected TopDownController _controller;
+		protected Character _character;
+
 		/// <summary>
 		/// On start we grab our character movement component and pick a random direction
 		/// </summary>
 		public override void Initialization()
 		{
-			if(!ShouldInitialize) return;
+			if (!ShouldInitialize) return;
 			base.Initialization();
-			_characterMovement = this.gameObject.GetComponentInParent<Character>()?.FindAbility<CharacterMovement>();
-			_collider = this.gameObject.GetComponentInParent<Collider>();
+			_character = this.gameObject.GetComponentInParent<Character>();
+			_characterMovement = _character?.FindAbility<CharacterMovement>();
+			_controller = this.gameObject.GetComponentInParent<TopDownController>();
+			TargetCollider = this.gameObject.GetComponentInParent<Collider>();
 			PickRandomDirection();
 		}
 
@@ -84,10 +105,20 @@ namespace MoreMountains.TopDownEngine
 			_rayDirection = Vector3.zero;
 			_rayDirection.x = _direction.x;
 			_rayDirection.z = _direction.y;
-			bool hit = Physics.BoxCast(_collider.bounds.center, _collider.bounds.extents, _rayDirection.normalized, this.transform.rotation, ObstaclesDetectionDistance, ObstacleLayerMask);
-			if (hit)
+
+			if (TargetCollider != null)
 			{
-				PickRandomDirection();
+				bool hit = Physics.BoxCast(TargetCollider.bounds.center, TargetCollider.bounds.extents,
+					_rayDirection.normalized,
+					this.transform.rotation, ObstaclesDetectionDistance, ObstacleLayerMask);
+
+				DebugHitObstacle = hit;
+
+				if (hit)
+				{
+					Debug.Log("[AIActionMoveRandomly3D] Obstacle hit");
+					PickRandomDirection();
+				}
 			}
 
 			_lastObstacleDetectionTimestamp = Time.time;
@@ -121,8 +152,61 @@ namespace MoreMountains.TopDownEngine
 		{
 			base.OnExitState();
 
-			_characterMovement?.SetHorizontalMovement(0f);
-			_characterMovement?.SetVerticalMovement(0f);
+			if (_characterMovement != null)
+			{
+				_characterMovement.StopMovementInstantly();
+			}
+
+			if (_controller != null)
+			{
+				_controller.SetMovement(Vector3.zero);
+				_controller.Velocity = Vector3.zero;
+				_controller.AddedForce = Vector3.zero;
+				_controller.Acceleration = Vector3.zero;
+			}
+
+			if (_character != null && _character.MovementState.CurrentState != CharacterStates.MovementStates.Idle)
+			{
+				_character.MovementState.ChangeState(CharacterStates.MovementStates.Idle);
+			}
+		}
+
+		/// <summary>
+		/// Draws a gizmo to show the obstacle check direction and bounding box
+		/// </summary>
+		protected virtual void OnDrawGizmosSelected()
+		{
+			Collider col = TargetCollider;
+			if (col == null)
+			{
+				col = this.gameObject.GetComponentInParent<Collider>();
+			}
+
+			if (col != null)
+			{
+				Vector3 rayDir = Vector3.zero;
+				if (Application.isPlaying)
+				{
+					rayDir.x = _direction.x;
+					rayDir.z = _direction.y;
+				}
+				else
+				{
+					// In edit mode, just show a preview using the forward vector
+					rayDir = this.transform.forward;
+				}
+
+				if (rayDir.magnitude > 0.01f)
+				{
+					Gizmos.color = Color.red;
+					Gizmos.DrawRay(col.bounds.center, rayDir.normalized * ObstaclesDetectionDistance);
+
+					Gizmos.matrix = Matrix4x4.TRS(col.bounds.center + rayDir.normalized * ObstaclesDetectionDistance,
+						this.transform.rotation, Vector3.one);
+					Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
+					Gizmos.DrawWireCube(Vector3.zero, col.bounds.extents * 2f);
+				}
+			}
 		}
 	}
 }

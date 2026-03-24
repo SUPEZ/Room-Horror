@@ -15,6 +15,8 @@ namespace FIMSpace.Generating.Planning.GeneratingLogics
         public MinMax BranchThickness = new MinMax(1, 1);
         [Range(1, 25)] public int SeparationFactor = 5;
         public bool AvoidOverlaps = true;
+        public enum EInitialTunnelAxis { Any, XAxis, ZAxis }
+        public EInitialTunnelAxis StartTunnelAxis = EInitialTunnelAxis.Any;
         //public bool ThicknessSnap = true;
 
 #if UNITY_EDITOR
@@ -23,7 +25,7 @@ namespace FIMSpace.Generating.Planning.GeneratingLogics
 
         public override CheckerField3D GetChecker(FieldPlanner planner)
         {
-            CheckerField3D checker = GetTunnel(null, null, BranchLength.GetRandom(), BranchThickness.GetRandom());
+            CheckerField3D checker = GetInitialTunnel(BranchLength.GetRandom(), BranchThickness.GetRandom());
             CheckerField3D initTunnel = checker.Copy();
 
             List<CheckerField3D> tunnels = new List<CheckerField3D>();
@@ -51,6 +53,22 @@ namespace FIMSpace.Generating.Planning.GeneratingLogics
 
             checker.Bounding.Clear();
 
+            return checker;
+        }
+
+        protected CheckerField3D GetInitialTunnel(int size, int thickness)
+        {
+            if (StartTunnelAxis == EInitialTunnelAxis.Any)
+                return GetTunnel(null, null, size, thickness);
+
+            CheckerField3D checker = new CheckerField3D();
+
+            if (StartTunnelAxis == EInitialTunnelAxis.XAxis)
+                checker.AddStripeInDirection(Vector3Int.left * (size / 2), Vector3Int.right, size, thickness);
+            else
+                checker.AddStripeInDirection(new Vector3Int(0, 0, -1) * (size / 2), new Vector3Int(0, 0, 1), size, thickness);
+
+            checker.GetBasicBoundsLocal(true);
             return checker;
         }
 
