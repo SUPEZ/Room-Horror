@@ -167,6 +167,14 @@ MonoBehaviour:
   DoorsModificator: {fileID: 11400000, guid: 7500e28d48a8ac44da90dfc8719e91ef, type: 2}
   EraseWallModificator: {fileID: 11400000, guid: c5bd286613ebcb24c932c8d5e7f79f9b, type: 2}
   CellsInstructions:
+  - Title: Clear Wall
+    InstructionType: 3
+    TargetModification: {fileID: 6600022125512850291}
+    Tags: Props
+    InstructionArgument: 
+    Foldout: 1
+    extraMod: {fileID: 0}
+    extraPack: {fileID: 0}
   - Title: Door Hole
     InstructionType: 1
     TargetModification: {fileID: 5187157646886726579}
@@ -175,9 +183,9 @@ MonoBehaviour:
     Foldout: 1
     extraMod: {fileID: 0}
     extraPack: {fileID: 0}
-  - Title: Clear Wall
+  - Title: Spawn Dungeon Master
     InstructionType: 3
-    TargetModification: {fileID: 6600022125512850291}
+    TargetModification: {fileID: 724553736918273645}
     Tags: 
     InstructionArgument: 
     Foldout: 1
@@ -189,6 +197,7 @@ MonoBehaviour:
   - {fileID: -8516793550214747843}
   - {fileID: 6600022125512850291}
   - {fileID: -2999477001644582424}
+  - {fileID: 724553736918273645}
   ModificatorPacks:
   - {fileID: 3530312800913530165}
   - {fileID: 11400000, guid: 50923cf9cc26b954eaff6794ec05302b, type: 2}
@@ -216,6 +225,66 @@ MonoBehaviour:
     GenerateRelations: 1
     GroupUpToSize: 8
     MaxGroupDistance: 8
+--- !u!114 &724553736918273645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: FieldMod_DungeonMasterSpawner
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: DungeonMaster
+  DrawMeshAndBox: 0
+  Combine: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 4648696968861795558, guid: b00da3cd805ba674ab34a9715849b025, type: 3}
+    MainCollider: {fileID: 160601453209044158, guid: b00da3cd805ba674ab34a9715849b025, type: 3}
+    subID: 0
+    _refMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    _refCol: {fileID: 160601453209044158, guid: b00da3cd805ba674ab34a9715849b025, type: 3}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: Random Dungeon Master
+    SpawnerTag: DungeonMaster
+    StampPrefabID: -1
+    Parent: {fileID: 724553736918273645}
+    Rules: []
+    Mode: 0
+    CellCheckMode: 0
+    _Editor_SpawnerAdvancedOptionsFoldout: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    DontInheritRotations: 0
+    SwitchSpawnedToStatic: 0
+    MultipleToSpawn: 0
+    UseGlobalRules: 0
+    UseParentPackageRules: 0
+    _wasEnablingGlobalRules: 1
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+    _EditorDisplaySpawnerHeader: 0
+  SubSpawners: []
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_drawGlobalRules: 0
+  _editor_drawModPackRules: 0
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: 3530312800913530165}
 --- !u!114 &3530312800913530165
 MonoBehaviour:
   m_ObjectHideFlags: 0
