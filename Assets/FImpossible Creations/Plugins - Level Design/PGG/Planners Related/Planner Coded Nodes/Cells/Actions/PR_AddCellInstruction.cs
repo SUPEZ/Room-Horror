@@ -189,7 +189,7 @@ namespace FIMSpace.Generating.Planning.PlannerNodes.Cells.Actions
                     {
                         if (FlattenDiagonalDir) tgtDir = FVectorMethods.ChooseDominantAxis(tgtDir);
 
-                        if (tgtOwner.LatestChecker != null)
+                        if (tgtOwner != null && tgtOwner.LatestChecker != null)
                         {
                             instr.rot = Quaternion.Inverse(tgtOwner.LatestChecker.RootRotation) * Quaternion.LookRotation(tgtDir);
                         }

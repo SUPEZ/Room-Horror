@@ -1,39 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8516793550214747843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
-  m_Name: FieldMod_xxxx
-  m_EditorClassIdentifier: 
-  TemporaryContainer: {fileID: 0}
-  Enabled: 1
-  ModTag: 
-  DrawMeshAndBox: 0
-  Combine: 0
-  RunEmittersIfContains: 0
-  DrawSetupFor: 0
-  OStamp: {fileID: 0}
-  DrawObjectStamps: 1
-  OMultiStamp: {fileID: 0}
-  PrefabsList: []
-  DrawMultiObjectStamps: 1
-  Spawners: []
-  SubSpawners: []
-  VariantOf: {fileID: 0}
-  _editor_drawStamp: 1
-  _editor_drawSpawners: 1
-  _editor_drawGlobalRules: 0
-  _editor_drawModPackRules: 0
-  _editor_shareSelected: 0
-  ParentPreset: {fileID: 11400000}
-  ParentPack: {fileID: 3530312800913530165}
 --- !u!114 &-8357280577094745844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,13 +157,21 @@ MonoBehaviour:
     Foldout: 1
     extraMod: {fileID: 0}
     extraPack: {fileID: 0}
+  - Title: Spawn Resource
+    InstructionType: 3
+    TargetModification: {fileID: 7312456789012345601}
+    Tags: 
+    InstructionArgument: 
+    Foldout: 1
+    extraMod: {fileID: 0}
+    extraPack: {fileID: 0}
   RootPack: {fileID: 3530312800913530165}
   UtilityModificators:
   - {fileID: 5187157646886726579}
-  - {fileID: -8516793550214747843}
   - {fileID: 6600022125512850291}
   - {fileID: -2999477001644582424}
   - {fileID: 724553736918273645}
+  - {fileID: 7312456789012345601}
   ModificatorPacks:
   - {fileID: 3530312800913530165}
   - {fileID: 11400000, guid: 50923cf9cc26b954eaff6794ec05302b, type: 2}
@@ -283,7 +257,7 @@ MonoBehaviour:
   _editor_drawGlobalRules: 0
   _editor_drawModPackRules: 0
   _editor_shareSelected: 0
-  ParentPreset: {fileID: 11400000}
+  ParentPreset: {fileID: 0}
   ParentPack: {fileID: 3530312800913530165}
 --- !u!114 &3530312800913530165
 MonoBehaviour:
@@ -433,6 +407,81 @@ MonoBehaviour:
     MultipleToSpawn: 0
     UseGlobalRules: 1
     UseParentPackageRules: 1
+    _wasEnablingGlobalRules: 1
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+    _EditorDisplaySpawnerHeader: 0
+  SubSpawners: []
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_drawGlobalRules: 0
+  _editor_drawModPackRules: 0
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 0}
+  ParentPack: {fileID: 3530312800913530165}
+--- !u!114 &7312456789012345601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: FieldMod_ResourceRoomSpawner
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: Resource
+  DrawMeshAndBox: 0
+  Combine: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 3597446717570059404, guid: c6c3d51ac9469234d83845c43218bfcd, type: 3}
+    MainCollider: {fileID: 8730639893354220703, guid: c6c3d51ac9469234d83845c43218bfcd, type: 3}
+    subID: 0
+    _refMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    _refCol: {fileID: 8730639893354220703, guid: c6c3d51ac9469234d83845c43218bfcd, type: 3}
+  - Prefab: {fileID: 3597446717570059404, guid: 4f6b6ffea8f54f0ea7cd820cd8656cb4, type: 3}
+    MainCollider: {fileID: 8730639893354220703, guid: 4f6b6ffea8f54f0ea7cd820cd8656cb4, type: 3}
+    subID: 0
+    _refMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    _refCol: {fileID: 8730639893354220703, guid: 4f6b6ffea8f54f0ea7cd820cd8656cb4, type: 3}
+  - Prefab: {fileID: 3597446717570059404, guid: b6ac0b4b7d334784b70a31cdb7016b30, type: 3}
+    MainCollider: {fileID: 8730639893354220703, guid: b6ac0b4b7d334784b70a31cdb7016b30, type: 3}
+    subID: 0
+    _refMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    _refCol: {fileID: 8730639893354220703, guid: b6ac0b4b7d334784b70a31cdb7016b30, type: 3}
+  - Prefab: {fileID: 3597446717570059404, guid: f8edcf2672ec44a8ab08a3d0c18f920f, type: 3}
+    MainCollider: {fileID: 8730639893354220703, guid: f8edcf2672ec44a8ab08a3d0c18f920f, type: 3}
+    subID: 0
+    _refMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    _refCol: {fileID: 8730639893354220703, guid: f8edcf2672ec44a8ab08a3d0c18f920f, type: 3}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: Random Resource
+    SpawnerTag: Resource
+    StampPrefabID: -1
+    Parent: {fileID: 7312456789012345601}
+    Rules: []
+    Mode: 0
+    CellCheckMode: 0
+    _Editor_SpawnerAdvancedOptionsFoldout: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    DontInheritRotations: 0
+    SwitchSpawnedToStatic: 0
+    MultipleToSpawn: 0
+    UseGlobalRules: 0
+    UseParentPackageRules: 0
     _wasEnablingGlobalRules: 1
     ScaleAccess: 1
     DisplayPreviewGUI: 1
