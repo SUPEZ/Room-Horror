@@ -40,6 +40,7 @@ public class CharacterSpawner : MonoBehaviour
     [SerializeField] [Min(0.25f)] private float _spawnNavMeshSampleDistance = 4f;
 
     [Header("Debug")]
+    [SerializeField] [Min(0f)] private float _debugSpawnSquareSide = 5f;
     [SerializeField] private bool _verboseLogs;
     [MMInspectorButton("DebugSpawnWorker")] public bool DebugSpawnWorkerButton;
     [MMInspectorButton("DebugSpawnWarrior")] public bool DebugSpawnWarriorButton;
@@ -224,6 +225,11 @@ public class CharacterSpawner : MonoBehaviour
     protected virtual Vector3 ResolveSpawnPosition(Transform point)
     {
         Vector3 requestedPosition = point != null ? point.position : transform.position;
+        return ResolveSpawnPosition(requestedPosition);
+    }
+
+    protected virtual Vector3 ResolveSpawnPosition(Vector3 requestedPosition)
+    {
         if (!Application.isPlaying)
         {
             return requestedPosition;
@@ -245,6 +251,34 @@ public class CharacterSpawner : MonoBehaviour
 
         LogVerbose($"Spawn point for {name} was not on NavMesh. Using raw position {requestedPosition}.");
         return requestedPosition;
+    }
+
+    protected virtual Vector3 ResolveDebugSpawnPosition(Transform point)
+    {
+        Vector3 center = point != null ? point.position : transform.position;
+        float halfSide = _debugSpawnSquareSide * 0.5f;
+        Vector3 offset = new Vector3(
+            Random.Range(-halfSide, halfSide),
+            0f,
+            Random.Range(-halfSide, halfSide));
+
+        return ResolveSpawnPosition(center + offset);
+    }
+
+    protected virtual GameObject DebugSpawnCharacter(CharacterRoleType role)
+    {
+        GameObject prefabToSpawn = ResolvePrefab(role);
+        if (prefabToSpawn == null)
+        {
+            Debug.LogWarning($"[CharacterSpawner] No prefab configured for role {role} on {name}.", this);
+            return null;
+        }
+
+        Transform point = SpawnPoint;
+        Vector3 spawnPosition = ResolveDebugSpawnPosition(point);
+        GameObject spawnedObject = Instantiate(prefabToSpawn, spawnPosition, point.rotation, _spawnParent);
+        ConfigureSpawnedCharacter(spawnedObject, role);
+        return spawnedObject;
     }
 
     protected virtual void EnsureFallbackRuntimeNavMeshSurface()
@@ -316,7 +350,7 @@ public class CharacterSpawner : MonoBehaviour
             return;
         }
 
-        SpawnWorker();
+        DebugSpawnCharacter(CharacterRoleType.Worker);
     }
 
     protected virtual void DebugSpawnWarrior()
@@ -327,7 +361,7 @@ public class CharacterSpawner : MonoBehaviour
             return;
         }
 
-        SpawnWarrior();
+        DebugSpawnCharacter(CharacterRoleType.Warrior);
     }
 
     protected virtual void DebugSpawnScout()
@@ -338,7 +372,7 @@ public class CharacterSpawner : MonoBehaviour
             return;
         }
 
-        SpawnScout();
+        DebugSpawnCharacter(CharacterRoleType.Scout);
     }
 
     protected virtual void DebugSpawnScientist()
@@ -349,7 +383,7 @@ public class CharacterSpawner : MonoBehaviour
             return;
         }
 
-        SpawnScientist();
+        DebugSpawnCharacter(CharacterRoleType.Scientist);
     }
 
     protected virtual void DebugRebuildRuntimeNavMesh()

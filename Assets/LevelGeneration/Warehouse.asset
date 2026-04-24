@@ -39,6 +39,29 @@ MonoBehaviour:
       ToCheck:
       - {x: 0, y: 0, z: 0}
       EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+--- !u!114 &-5119297523487777731
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c5d3d4a088fc7428de7e68d550c321, type: 3}
+  m_Name: 'SR_PushPosition-[FieldMod_ResourceRoomSpawner]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  Offset: {x: 0, y: 0.5, z: 0}
+  RandomOffset: {x: 1, y: 0, z: 1}
+  RoundOffsetBy: {x: 0, y: 0, z: 0}
 --- !u!114 &-2999477001644582424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,21 +472,6 @@ MonoBehaviour:
     subID: 0
     _refMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     _refCol: {fileID: 8730639893354220703, guid: c6c3d51ac9469234d83845c43218bfcd, type: 3}
-  - Prefab: {fileID: 3597446717570059404, guid: 4f6b6ffea8f54f0ea7cd820cd8656cb4, type: 3}
-    MainCollider: {fileID: 8730639893354220703, guid: 4f6b6ffea8f54f0ea7cd820cd8656cb4, type: 3}
-    subID: 0
-    _refMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-    _refCol: {fileID: 8730639893354220703, guid: 4f6b6ffea8f54f0ea7cd820cd8656cb4, type: 3}
-  - Prefab: {fileID: 3597446717570059404, guid: b6ac0b4b7d334784b70a31cdb7016b30, type: 3}
-    MainCollider: {fileID: 8730639893354220703, guid: b6ac0b4b7d334784b70a31cdb7016b30, type: 3}
-    subID: 0
-    _refMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-    _refCol: {fileID: 8730639893354220703, guid: b6ac0b4b7d334784b70a31cdb7016b30, type: 3}
-  - Prefab: {fileID: 3597446717570059404, guid: f8edcf2672ec44a8ab08a3d0c18f920f, type: 3}
-    MainCollider: {fileID: 8730639893354220703, guid: f8edcf2672ec44a8ab08a3d0c18f920f, type: 3}
-    subID: 0
-    _refMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-    _refCol: {fileID: 8730639893354220703, guid: f8edcf2672ec44a8ab08a3d0c18f920f, type: 3}
   DrawMultiObjectStamps: 1
   Spawners:
   - Enabled: 1
@@ -471,7 +479,8 @@ MonoBehaviour:
     SpawnerTag: Resource
     StampPrefabID: -1
     Parent: {fileID: 7312456789012345601}
-    Rules: []
+    Rules:
+    - {fileID: -5119297523487777731}
     Mode: 0
     CellCheckMode: 0
     _Editor_SpawnerAdvancedOptionsFoldout: 0
@@ -525,3 +534,32 @@ MonoBehaviour:
   DistanceSource: 0
   DebugDirection: 0
   DrawDebugGizmos: 1
+--- !u!114 &8607959212889015399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c46bad85e11ef44b81af1e5e1391dfc, type: 3}
+  m_Name: 'SR_CellPosition-[FieldMod_ResourceRoomSpawner]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  Mode: 0
+  Axis: 1
+  Exact: 0
+  Offset: 0
+  Range: {x: -3, y: 3}
+  ValueMulVariable:
+    name: 
+    requiredType: 1
+    Tooltip: 

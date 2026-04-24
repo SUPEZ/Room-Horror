@@ -530,19 +530,9 @@ public class CameraManager : MMSingleton<CameraManager>
             stateMachine.Disable();
         }
 
-        // If we have a previously controlled character, restore control to it first.
-        if (CharactersCoordinator.HasInstance &&
-            CharactersCoordinator.Instance.TryRestoreLastControlled(out CharacterProvider restoredProvider) &&
-            restoredProvider != null &&
-            restoredProvider.ControlledCharacter != null)
+        // Prefer the character switching system used by spawned/AI characters.
+        if (TryEnableCoordinatorCharacterMode())
         {
-            Character restoredCharacter = restoredProvider.ControlledCharacter;
-            EnableCharacterAbilities(restoredCharacter);
-            MMCameraEvent.Trigger(MMCameraEventTypes.SetTargetCharacter, restoredCharacter);
-            MMCameraEvent.Trigger(MMCameraEventTypes.StartFollowing);
-
-            Debug.Log(
-                $"[CameraManager] Character Mode ACTIVE - Restored control to last character: {restoredCharacter.name}");
             return;
         }
 
@@ -568,6 +558,54 @@ public class CameraManager : MMSingleton<CameraManager>
         {
             Debug.LogWarning("[CameraManager] No player found for character mode!");
         }
+    }
+
+    private bool TryEnableCoordinatorCharacterMode()
+    {
+        if (!CharactersCoordinator.HasInstance)
+        {
+            return false;
+        }
+
+        CharactersCoordinator coordinator = CharactersCoordinator.Instance;
+        CharacterProvider provider = null;
+
+        if (coordinator.TryRestoreLastControlled(out CharacterProvider restoredProvider))
+        {
+            provider = restoredProvider;
+        }
+
+        if (provider == null)
+        {
+            provider = coordinator.CurrentPlayer;
+        }
+
+        if (provider == null)
+        {
+            foreach (CharacterProvider candidate in coordinator.AllCharacters)
+            {
+                if (candidate != null)
+                {
+                    provider = candidate;
+                    break;
+                }
+            }
+        }
+
+        if (provider == null || provider.ControlledCharacter == null)
+        {
+            return false;
+        }
+
+        coordinator.SetPlayer(provider);
+
+        Character character = provider.ControlledCharacter;
+        EnableCharacterAbilities(character);
+        MMCameraEvent.Trigger(MMCameraEventTypes.SetTargetCharacter, character);
+        MMCameraEvent.Trigger(MMCameraEventTypes.StartFollowing);
+
+        Debug.Log($"[CameraManager] Character Mode ACTIVE - Control character: {character.name}");
+        return true;
     }
 
     private void EnableCharacterAbilities(Character character)

@@ -10,6 +10,7 @@ namespace GameResources
     /// Later steps will add AI task integration around this node.
     /// </summary>
     [DisallowMultipleComponent]
+    [RequireComponent(typeof(SpriteRenderer))]
     [AddComponentMenu("Room Horror/Resources/Resource Node")]
     public class ResourceNode : MonoBehaviour
     {
@@ -28,6 +29,12 @@ namespace GameResources
 
         [Header("Lifecycle")]
         [SerializeField] private bool _deactivateWhenDepleted = true;
+
+        [Header("Visuals")]
+        [SerializeField] private ResourceInitialSpriteSet _initialSpriteSet;
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private bool _randomizeInitialSprite = true;
+        [SerializeField] [Min(0)] private int _initialSpriteIndex;
 
         [Header("Debug")]
         [SerializeField] private bool _drawGizmos = true;
@@ -59,6 +66,8 @@ namespace GameResources
 
         private void Awake()
         {
+            EnsureSpriteRenderer();
+            ApplyInitialSprite();
             ResetNode();
             RegenerateApproachSlots();
         }
@@ -72,6 +81,25 @@ namespace GameResources
         {
             _currentAmount = Mathf.Max(0, _startingAmount);
             ClearAllReservations();
+        }
+
+        public void ApplyInitialSprite()
+        {
+            EnsureSpriteRenderer();
+
+            if (_spriteRenderer == null || _initialSpriteSet == null)
+            {
+                return;
+            }
+
+            Sprite sprite = _randomizeInitialSprite
+                ? _initialSpriteSet.GetRandomSprite(_resourceType)
+                : _initialSpriteSet.GetSprite(_resourceType, _initialSpriteIndex);
+
+            if (sprite != null)
+            {
+                _spriteRenderer.sprite = sprite;
+            }
         }
 
         public void RegenerateApproachSlots()
@@ -261,6 +289,7 @@ namespace GameResources
 
         private void OnValidate()
         {
+            EnsureSpriteRenderer();
             _startingAmount = Mathf.Max(1, _startingAmount);
             _yieldPerCycle = Mathf.Max(1, _yieldPerCycle);
             _gatherDuration = Mathf.Max(0.1f, _gatherDuration);
@@ -271,7 +300,57 @@ namespace GameResources
             _navMeshSampleDistance = Mathf.Max(0.1f, _navMeshSampleDistance);
 
             RegenerateApproachSlots();
+
+            if (!Application.isPlaying)
+            {
+                ApplyInitialSprite();
+            }
         }
+
+        private void EnsureSpriteRenderer()
+        {
+            if (_spriteRenderer != null)
+            {
+                return;
+            }
+
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            if (_spriteRenderer != null)
+            {
+                return;
+            }
+
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+            {
+                UnityEditor.EditorApplication.delayCall += AddSpriteRendererInEditor;
+                return;
+            }
+#endif
+
+            if (Application.isPlaying)
+            {
+                _spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+            }
+        }
+
+#if UNITY_EDITOR
+        private void AddSpriteRendererInEditor()
+        {
+            if (this == null || _spriteRenderer != null)
+            {
+                return;
+            }
+
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            if (_spriteRenderer == null)
+            {
+                _spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+            }
+
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
+#endif
 
         private void OnDrawGizmosSelected()
         {
