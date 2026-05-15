@@ -12,6 +12,8 @@ using GameModes;
 /// </summary>
 public class CameraManager : MMSingleton<CameraManager>
 {
+    private const float MouseDragReferenceDeltaTime = 1f / 60f;
+
     [Header("Camera Mode Settings")] [Tooltip("Camera mode to start with")]
     public CameraMode startMode = CameraMode.FreeCamera;
 
@@ -23,6 +25,14 @@ public class CameraManager : MMSingleton<CameraManager>
 
     [Tooltip("Mouse button for dragging (0=Left, 1=Right, 2=Middle)")]
     public int dragMouseButton = 2;
+
+    [Header("Free Camera Smoothing")]
+    [Tooltip("Smooth camera movement while following the invisible free-camera target")]
+    public bool smoothFreeCameraMovement = true;
+
+    [Tooltip("Lower values follow faster, higher values feel smoother")]
+    [Range(0.01f, 1f)]
+    public float freeCameraSmoothTime = 0.12f;
 
     [Header("Zoom Settings")] [Tooltip("Enable zoom with mouse wheel")]
     public bool enableMouseWheelZoom = true;
@@ -67,6 +77,7 @@ public class CameraManager : MMSingleton<CameraManager>
     private bool _hasBounds;
     private Vector3 _lastMousePosition;
     private bool _isDragging;
+    private Vector3 _freeCameraVelocity;
 
     // Game mode components
     private ManipulatorMode _manipulatorMode;
@@ -371,7 +382,8 @@ public class CameraManager : MMSingleton<CameraManager>
             else
             {
                 Vector3 delta = currentMousePosition - _lastMousePosition;
-                Vector3 movement = new Vector3(-delta.x, 0f, -delta.y) * (mouseDragSpeed * Time.deltaTime);
+                Vector3 movement = new Vector3(-delta.x, 0f, -delta.y) *
+                                   (mouseDragSpeed * MouseDragReferenceDeltaTime);
                 _invisibleTarget.transform.position += movement;
                 _lastMousePosition = currentMousePosition;
             }
@@ -469,6 +481,7 @@ public class CameraManager : MMSingleton<CameraManager>
             Vector3 camPos = mainCamera.transform.position;
             _invisibleTarget.transform.position =
                 new Vector3(camPos.x, _invisibleTarget.transform.position.y, camPos.z);
+            _freeCameraVelocity = Vector3.zero;
         }
 
         // Enable State Machine
@@ -639,9 +652,21 @@ public class CameraManager : MMSingleton<CameraManager>
             // Move camera to follow invisible target (keep same Y offset)
             Vector3 targetPos = _invisibleTarget.transform.position;
             Vector3 currentPos = mainCamera.transform.position;
+            Vector3 desiredPos = new Vector3(targetPos.x, currentPos.y, targetPos.z);
 
-            // Only update X and Z, keep Y (height) the same
-            mainCamera.transform.position = new Vector3(targetPos.x, currentPos.y, targetPos.z);
+            if (smoothFreeCameraMovement)
+            {
+                mainCamera.transform.position = Vector3.SmoothDamp(
+                    currentPos,
+                    desiredPos,
+                    ref _freeCameraVelocity,
+                    freeCameraSmoothTime);
+            }
+            else
+            {
+                _freeCameraVelocity = Vector3.zero;
+                mainCamera.transform.position = desiredPos;
+            }
         }
     }
 
@@ -661,6 +686,7 @@ public class CameraManager : MMSingleton<CameraManager>
         if (_invisibleTarget != null)
         {
             _invisibleTarget.transform.position = position;
+            _freeCameraVelocity = Vector3.zero;
         }
     }
 

@@ -174,7 +174,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a1e7689316b47b245b9123f53056a5de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5175ba7dfe7535949ace9b423e5cd036, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -201,3 +201,12 @@ MonoBehaviour:
   LimitZ: 0
   LimitY: 1
   Reverse: 0
+  ClampX: 0
+  MinAngleX: -45
+  MaxAngleX: 45
+  ClampY: 0
+  MinAngleY: -90
+  MaxAngleY: 90
+  ClampZ: 0
+  MinAngleZ: -45
+  MaxAngleZ: 45

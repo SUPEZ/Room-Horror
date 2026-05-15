@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class FreeCameraController : MonoBehaviour
 {
+    private const float MouseDragReferenceDeltaTime = 1f / 60f;
+
     [Header("Movement Settings")]
     [Tooltip("Movement speed when using keyboard (units per second)")]
     public float keyboardMoveSpeed = 10f;
@@ -115,7 +117,8 @@ public class FreeCameraController : MonoBehaviour
             {
                 Vector3 delta = currentMousePosition - _lastMousePosition;
                 // Convert screen space to world space movement
-                Vector3 movement = new Vector3(-delta.x, 0f, -delta.y) * (mouseDragSpeed * Time.deltaTime);
+                Vector3 movement = new Vector3(-delta.x, 0f, -delta.y) *
+                                   (mouseDragSpeed * MouseDragReferenceDeltaTime);
                 _targetPosition += movement;
                 _lastMousePosition = currentMousePosition;
             }

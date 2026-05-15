@@ -2376,6 +2376,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 174290506576614936, guid: a0f40e481bf83ed40bde1754e71dd9e3, type: 3}
   m_PrefabInstance: {fileID: 158467157}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &165101109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c79c7a2539c4104cb6be2cba7f34193, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  _editorForceChanged: 0
+  Width: 3
+  YLevels: 1
+  Depth: 3
+  OriginInCenter: 1
 --- !u!1001 &171674023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5223,7 +5240,7 @@ PrefabInstance:
     - target: {fileID: 5003715131844130526, guid: c6c3d51ac9469234d83845c43218bfcd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5175ba7dfe7535949ace9b423e5cd036, type: 3}
+      objectReference: {fileID: 21300000, guid: 2d447be0a2520a64b8378133c3c9a503, type: 3}
     - target: {fileID: 7814799595742113473, guid: c6c3d51ac9469234d83845c43218bfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44.01651
@@ -9347,6 +9364,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1918232351}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &600330329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124b385a8cf08044d9f7353b2aec97a2, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  _editorForceChanged: 0
+  BranchLength:
+    Min: 10
+    Max: 14
+  TargetBranches:
+    Min: 4
+    Max: 7
+  BranchThickness:
+    Min: 1
+    Max: 1
+  SeparationFactor: 3
+  AvoidOverlaps: 1
+  StartTunnelAxis: 1
+  MaxSize: {x: 18, y: 0, z: 11}
+  MinSize: {x: -3, y: 0, z: -11}
 --- !u!1001 &601294278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16664,7 +16708,7 @@ PrefabInstance:
     - target: {fileID: 5003715131844130526, guid: c6c3d51ac9469234d83845c43218bfcd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6558c05debe4b8a459dd2448c7cdf87f, type: 3}
+      objectReference: {fileID: 21300000, guid: 0d601df972c3b734b919a7dbac8bb5da, type: 3}
     - target: {fileID: 7814799595742113473, guid: c6c3d51ac9469234d83845c43218bfcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 54.96926
@@ -32747,6 +32791,8 @@ MonoBehaviour:
   targetMoveSpeed: 10
   mouseDragSpeed: 0.5
   dragMouseButton: 2
+  smoothFreeCameraMovement: 1
+  freeCameraSmoothTime: 0.12
   enableMouseWheelZoom: 1
   zoomStep: 1
   minOrthographicSize: 4

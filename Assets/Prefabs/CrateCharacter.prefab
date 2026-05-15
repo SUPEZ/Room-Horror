@@ -483,6 +483,15 @@ MonoBehaviour:
   LimitZ: 0
   LimitY: 1
   Reverse: 0
+  ClampX: 0
+  MinAngleX: -45
+  MaxAngleX: 45
+  ClampY: 0
+  MinAngleY: -90
+  MaxAngleY: 90
+  ClampZ: 0
+  MinAngleZ: -45
+  MaxAngleZ: 45
 --- !u!114 &9010422114719975518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,7 +675,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.28}
+  m_Size: {x: 0.34, y: 0.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
