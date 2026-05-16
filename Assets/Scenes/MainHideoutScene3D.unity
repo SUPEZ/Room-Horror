@@ -595,7 +595,7 @@ PrefabInstance:
     - target: {fileID: 2764511042502991257, guid: 8ec19b3da2364804990c98e14c873bb5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6558c05debe4b8a459dd2448c7cdf87f, type: 3}
+      objectReference: {fileID: 21300000, guid: a1e7689316b47b245b9123f53056a5de, type: 3}
     - target: {fileID: 2936105916578451948, guid: 8ec19b3da2364804990c98e14c873bb5, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -615,7 +615,7 @@ PrefabInstance:
     - target: {fileID: 3794220540230515702, guid: 8ec19b3da2364804990c98e14c873bb5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d3a7e2ea985f9d64fa861725b88c103a, type: 3}
+      objectReference: {fileID: 21300000, guid: 0d601df972c3b734b919a7dbac8bb5da, type: 3}
     - target: {fileID: 4004632651233051026, guid: 8ec19b3da2364804990c98e14c873bb5, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -657,9 +657,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 2d447be0a2520a64b8378133c3c9a503, type: 3}
     - target: {fileID: 7897405412963336107, guid: 8ec19b3da2364804990c98e14c873bb5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897405412963336107, guid: 8ec19b3da2364804990c98e14c873bb5, type: 3}
+      propertyPath: m_Size.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897405412963336107, guid: 8ec19b3da2364804990c98e14c873bb5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5175ba7dfe7535949ace9b423e5cd036, type: 3}
+      objectReference: {fileID: 21300000, guid: 6558c05debe4b8a459dd2448c7cdf87f, type: 3}
     - target: {fileID: 7897405412963336107, guid: 8ec19b3da2364804990c98e14c873bb5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -853,6 +861,33 @@ MonoBehaviour:
   SmoothMovement: 1
   Threshold: {x: 0.1, y: 0.4}
   RotateInputBasedOnCameraDirection: 0
+--- !u!114 &691645461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124b385a8cf08044d9f7353b2aec97a2, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  _editorForceChanged: 0
+  BranchLength:
+    Min: 10
+    Max: 14
+  TargetBranches:
+    Min: 4
+    Max: 7
+  BranchThickness:
+    Min: 1
+    Max: 1
+  SeparationFactor: 3
+  AvoidOverlaps: 1
+  StartTunnelAxis: 1
+  MaxSize: {x: 18, y: 0, z: 11}
+  MinSize: {x: -3, y: 0, z: -11}
 --- !u!1 &814549696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,6 +1615,23 @@ MonoBehaviour:
   CurrentTimeScale: 1
   TargetTimeScale: 1
   TestButton: 0
+--- !u!114 &1811217377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c79c7a2539c4104cb6be2cba7f34193, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  _editorForceChanged: 0
+  Width: 3
+  YLevels: 1
+  Depth: 3
+  OriginInCenter: 1
 --- !u!1 &1910037451
 GameObject:
   m_ObjectHideFlags: 0
