@@ -94,9 +94,9 @@ MonoBehaviour:
   _drawSlotLabels: 0
   _approachSlots:
   - _index: 0
-    _localPosition: {x: 1.28, y: -0.3633377, z: 0}
+    _localPosition: {x: 1.28, y: -0.36333764, z: 0}
   - _index: 1
-    _localPosition: {x: -1.2800002, y: -0.3633377, z: 0}
+    _localPosition: {x: -1.2800002, y: -0.36333764, z: 0}
 --- !u!1 &5295623453370956183
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.48, y: 0.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
