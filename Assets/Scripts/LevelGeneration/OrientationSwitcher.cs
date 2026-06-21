@@ -1,14 +1,27 @@
 using UnityEngine;
+using System;
 
 namespace LevelGeneration
 {
     public class OrientationSwitcher : MonoBehaviour
     {
+        public enum Orientation
+        {
+            None,
+            SameDirection,
+            OppositeDirection,
+            Perpendicular
+        }
+
+        public event Action<Orientation> OrientationChanged;
+
         [SerializeField] private Camera mainCamera; // optional override; falls back to Camera.main
         [SerializeField] private GameObject whenSameDirectionEnabled;
         [SerializeField] private GameObject whenOppositeDirectionEnabled;
         [SerializeField] private GameObject whenPerpendicularEnabled;
         [SerializeField, Range(0f, 180f)] private float angleTolerance = 45f;
+
+        private Orientation currentOrientation = Orientation.None;
 
         private void Awake()
         {
@@ -34,7 +47,7 @@ namespace LevelGeneration
 
             if (camFlat.sqrMagnitude <= Mathf.Epsilon || selfFlat.sqrMagnitude <= Mathf.Epsilon)
             {
-                SetActiveStates(false, false, false);
+                SetOrientation(Orientation.None);
                 return;
             }
 
@@ -42,23 +55,40 @@ namespace LevelGeneration
 
             if (Mathf.Abs(angle - 0f) <= angleTolerance)
             {
-                SetActiveStates(true, false, false); // same direction
+                SetOrientation(Orientation.SameDirection);
                 return;
             }
 
             if (Mathf.Abs(angle - 180f) <= angleTolerance)
             {
-                SetActiveStates(false, true, false); // opposite direction
+                SetOrientation(Orientation.OppositeDirection);
                 return;
             }
 
             if (Mathf.Abs(angle - 90f) <= angleTolerance)
             {
-                SetActiveStates(false, false, true); // perpendicular
+                SetOrientation(Orientation.Perpendicular);
                 return;
             }
 
-            SetActiveStates(false, false, false); // other angles
+            SetOrientation(Orientation.None);
+        }
+
+        private void SetOrientation(Orientation orientation)
+        {
+            bool same = orientation == Orientation.SameDirection;
+            bool opposite = orientation == Orientation.OppositeDirection;
+            bool perpendicular = orientation == Orientation.Perpendicular;
+
+            SetActiveStates(same, opposite, perpendicular);
+
+            if (currentOrientation == orientation)
+            {
+                return;
+            }
+
+            currentOrientation = orientation;
+            OrientationChanged?.Invoke(currentOrientation);
         }
 
         private void SetActiveStates(bool same, bool opposite, bool perpendicular)
