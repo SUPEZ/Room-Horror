@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 966c07ef879cbf642b2f3212c4993f3b
+guid: 5bac30e31770e9f4fae31e9c496af97e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 0
     linearTexture: 0
     fadeOut: 0
@@ -39,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 0
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -95,115 +95,21 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Boxer_front_move_nmap_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 116
-        height: 132
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f7970aa1fbd9be4cb030908337498cc
-      internalID: -467870746
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boxer_front_move_nmap_1
-      rect:
-        serializedVersion: 2
-        x: 116
-        y: 0
-        width: 116
-        height: 132
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9b59f509af1a70408a9d33ddb706b33
-      internalID: -1397199952
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boxer_front_move_nmap_2
-      rect:
-        serializedVersion: 2
-        x: 232
-        y: 0
-        width: 116
-        height: 132
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1dbe95305262b42458be2ac74071cdd1
-      internalID: -13386947
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boxer_front_move_nmap_3
-      rect:
-        serializedVersion: 2
-        x: 348
-        y: 0
-        width: 116
-        height: 132
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96d9babe07cb6f84db11445b25842cba
-      internalID: -654395906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 238f4136220d07749a1b6e326d9053d4
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: 5bac30e31770e9f4fae31e9c496af97e, type: 3}
-      name: _NormalMap
+    secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Boxer_front_move_nmap_0: -467870746
-      Boxer_front_move_nmap_1: -1397199952
-      Boxer_front_move_nmap_2: -13386947
-      Boxer_front_move_nmap_3: -654395906
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -71,6 +71,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientationSwitcher: {fileID: 7598379425885033290}
   wallNoPerp: {fileID: 5467098449210347111}
+  wallCollider: {fileID: 9139502313403467092}
+  colliderEdgePadding: 0.01
   decalSlots:
   - {fileID: 6822757383103026704}
   - {fileID: 1905793950339280785}
@@ -204,8 +206,8 @@ Transform:
   m_GameObject: {fileID: 4123360080555786364}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0.15}
-  m_LocalScale: {x: 3, y: 4, z: 0.3}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0.15}
+  m_LocalScale: {x: 3, y: 2.5, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9202191893386868277}

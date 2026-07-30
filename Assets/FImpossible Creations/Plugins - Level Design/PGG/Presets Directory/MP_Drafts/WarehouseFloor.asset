@@ -188,26 +188,6 @@ MonoBehaviour:
     subID: 0
     _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
     _refCol: {fileID: 4724461349290602906, guid: ae8e728ff6e239e4da10b55c0ec5e423, type: 3}
-  - Prefab: {fileID: 8360462314092389405, guid: 10e60df11754fa7438017bf8270ab524, type: 3}
-    MainCollider: {fileID: 4724461349290602906, guid: 10e60df11754fa7438017bf8270ab524, type: 3}
-    subID: 0
-    _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-    _refCol: {fileID: 4724461349290602906, guid: 10e60df11754fa7438017bf8270ab524, type: 3}
-  - Prefab: {fileID: 8360462314092389405, guid: 92848044a4870d6489cbe808798a2a29, type: 3}
-    MainCollider: {fileID: 4724461349290602906, guid: 92848044a4870d6489cbe808798a2a29, type: 3}
-    subID: 0
-    _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-    _refCol: {fileID: 4724461349290602906, guid: 92848044a4870d6489cbe808798a2a29, type: 3}
-  - Prefab: {fileID: 8360462314092389405, guid: 3bf2f248ffd34204282b041d6a40a8e3, type: 3}
-    MainCollider: {fileID: 4724461349290602906, guid: 3bf2f248ffd34204282b041d6a40a8e3, type: 3}
-    subID: 0
-    _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-    _refCol: {fileID: 4724461349290602906, guid: 3bf2f248ffd34204282b041d6a40a8e3, type: 3}
-  - Prefab: {fileID: 8360462314092389405, guid: 14c77e2741ec09d489893636e2c21a8b, type: 3}
-    MainCollider: {fileID: 4724461349290602906, guid: 14c77e2741ec09d489893636e2c21a8b, type: 3}
-    subID: 0
-    _refMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-    _refCol: {fileID: 4724461349290602906, guid: 14c77e2741ec09d489893636e2c21a8b, type: 3}
   DrawMultiObjectStamps: 1
   Spawners:
   - Enabled: 1

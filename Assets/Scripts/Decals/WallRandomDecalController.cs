@@ -10,6 +10,10 @@ public sealed class WallRandomDecalController : MonoBehaviour
 {
     [SerializeField] private OrientationSwitcher orientationSwitcher;
     [SerializeField] private GameObject wallNoPerp;
+    [SerializeField, Tooltip("Collider whose wall-facing side limits the decal projection.")]
+    private Collider wallCollider;
+    [SerializeField, Min(0f), Tooltip("Extra space kept between the decal and collider edges.")]
+    private float colliderEdgePadding = 0.01f;
     [SerializeField, Tooltip("Wall positions where a selected decal material can be projected.")]
     private DecalProjector[] decalSlots;
     [SerializeField, Tooltip("Pixel-fit components matching Decal Slots by index.")]
@@ -27,6 +31,11 @@ public sealed class WallRandomDecalController : MonoBehaviour
         if (orientationSwitcher == null)
         {
             orientationSwitcher = GetComponent<OrientationSwitcher>();
+        }
+
+        if (wallCollider == null)
+        {
+            wallCollider = GetComponentInChildren<Collider>(true);
         }
 
         generationSeed = FGenerators.LatestSeed;
@@ -82,34 +91,16 @@ public sealed class WallRandomDecalController : MonoBehaviour
             return;
         }
 
-        if (decalSlots == null || decalSlots.Length == 0 || decalMaterials == null || decalMaterials.Length == 0)
-        {
-            DisableAllDecals();
-            return;
-        }
-
-        var random = new System.Random(GetStableSeed());
-        activeDecalIndex = GetRandomSlotIndex(random);
-        activeMaterialIndex = GetWeightedMaterialIndex(random);
-
-        if (activeDecalIndex >= 0 && activeMaterialIndex >= 0)
-        {
-            DecalProjector activeProjector = decalSlots[activeDecalIndex];
-            activeProjector.material = decalMaterials[activeMaterialIndex];
-
-            if (decalScalers != null && activeDecalIndex < decalScalers.Length && decalScalers[activeDecalIndex] != null)
-            {
-                decalScalers[activeDecalIndex].FitToMainTexture();
-            }
-        }
-
-        for (int i = 0; i < decalSlots.Length; i++)
-        {
-            if (decalSlots[i] != null)
-            {
-                decalSlots[i].enabled = i == activeDecalIndex && activeMaterialIndex >= 0;
-            }
-        }
+        RandomDecalControllerBase.RefreshDecals(
+            decalSlots,
+            decalScalers,
+            decalMaterials,
+            materialWeights,
+            wallCollider,
+            colliderEdgePadding,
+            RandomDecalControllerBase.GetStableSeed(generationSeed, transform.position),
+            out activeDecalIndex,
+            out activeMaterialIndex);
     }
 
     private void DisableAllDecals()
@@ -117,103 +108,6 @@ public sealed class WallRandomDecalController : MonoBehaviour
         activeDecalIndex = -1;
         activeMaterialIndex = -1;
 
-        if (decalSlots == null)
-        {
-            return;
-        }
-
-        foreach (DecalProjector decalSlot in decalSlots)
-        {
-            if (decalSlot != null)
-            {
-                decalSlot.enabled = false;
-            }
-        }
-    }
-
-    private int GetStableSeed()
-    {
-        Vector3 position = transform.position;
-
-        unchecked
-        {
-            int seed = generationSeed;
-            seed = seed * 486187739 + Mathf.RoundToInt(position.x * 1000f);
-            seed = seed * 486187739 + Mathf.RoundToInt(position.y * 1000f);
-            seed = seed * 486187739 + Mathf.RoundToInt(position.z * 1000f);
-            return seed;
-        }
-    }
-
-    private int GetRandomSlotIndex(System.Random random)
-    {
-        int validSlotCount = 0;
-        foreach (DecalProjector decalSlot in decalSlots)
-        {
-            if (decalSlot != null)
-            {
-                validSlotCount++;
-            }
-        }
-
-        if (validSlotCount == 0)
-        {
-            return -1;
-        }
-
-        int target = random.Next(0, validSlotCount);
-        for (int i = 0; i < decalSlots.Length; i++)
-        {
-            if (decalSlots[i] != null && target-- == 0)
-            {
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
-    private int GetWeightedMaterialIndex(System.Random random)
-    {
-        float totalWeight = 0f;
-        for (int i = 0; i < decalMaterials.Length; i++)
-        {
-            if (decalMaterials[i] != null)
-            {
-                totalWeight += GetMaterialWeight(i);
-            }
-        }
-
-        if (totalWeight <= 0f)
-        {
-            return -1;
-        }
-
-        float roll = (float)random.NextDouble() * totalWeight;
-        for (int i = 0; i < decalMaterials.Length; i++)
-        {
-            if (decalMaterials[i] == null)
-            {
-                continue;
-            }
-
-            roll -= GetMaterialWeight(i);
-            if (roll < 0f)
-            {
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
-    private float GetMaterialWeight(int index)
-    {
-        if (materialWeights == null || index >= materialWeights.Length)
-        {
-            return 1f;
-        }
-
-        return Mathf.Max(0f, materialWeights[index]);
+        RandomDecalControllerBase.DisableAllDecals(decalSlots);
     }
 }
