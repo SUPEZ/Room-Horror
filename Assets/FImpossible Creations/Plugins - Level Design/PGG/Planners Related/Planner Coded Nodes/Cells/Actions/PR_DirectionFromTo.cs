@@ -54,7 +54,7 @@ namespace FIMSpace.Generating.Planning.PlannerNodes.Cells.Actions
                 }
             }
             else
-                from = To.GetInputValue;
+                to = To.GetInputValue;
 
             Vector3 dir = ( to - from ).normalized;
 

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b7b7d2eb85d19a4da49a85b81a1cb59, type: 3}
-  m_Name: 'SR_RemoveSpawn-[FieldMod_WarehouseWallRemover]'
+  m_Script: {fileID: 11500000, guid: 6c3eb05acb0b93347af77c10c419406a, type: 3}
+  m_Name: 'SR_DirectionalRemove-[FieldMod_WarehouseWallRemover]'
   m_EditorClassIdentifier: 
   Logic: 0
   Negate: 0
@@ -20,25 +20,14 @@ MonoBehaviour:
   _editor_drawRule: 1
   CellAllow: 1
   AllConditionsMet: 1
-  Remove:
-    AffectedTags: Wall
-    CheckMode: 0
-    RemoveCount: 1
-    CheckOffset: 0
-    OffsetCellPosition: {x: 0, y: 0, z: 0}
-    RemoveWhen: 3
-    UseSelfRotation: 2
-    DegreesTolerance: 0
-    checkSetup:
-      UseRotor: 1
-      Rotor: 0
-      UseCondition: 0
-      Condition: 0
-      ExtraString: 
-      ExtraValue: 0
-      ToCheck:
-      - {x: 0, y: 0, z: 0}
-      EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+  replaceOnTag: Wall
+  CheckMode: 0
+  LocalRemovePosition: {x: 0, y: 0, z: 0.5}
+  OffsetMode: 1
+  RemoveDistance: 0.1
+  DistanceSource: 0
+  ExecuteOnOffsettedCell: {x: 0, y: 0, z: 0}
+  DrawDebugGizmos: 0
 --- !u!114 &-5119297523487777731
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -94,9 +94,9 @@ MonoBehaviour:
   _drawSlotLabels: 0
   _approachSlots:
   - _index: 0
-    _localPosition: {x: 1.28, y: -0.36333764, z: 0}
+    _localPosition: {x: 1.28, y: 0, z: 0}
   - _index: 1
-    _localPosition: {x: -1.2800002, y: -0.36333764, z: 0}
+    _localPosition: {x: -1.2800002, y: 0, z: 0}
 --- !u!1 &5295623453370956183
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6558c05debe4b8a459dd2448c7cdf87f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5175ba7dfe7535949ace9b423e5cd036, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

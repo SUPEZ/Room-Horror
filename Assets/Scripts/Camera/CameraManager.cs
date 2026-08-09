@@ -103,7 +103,18 @@ public class CameraManager : MMSingleton<CameraManager>
 
     private void Start()
     {
-        // Wait for LevelManager to spawn character, then set mode
+        // Free camera must become active immediately. Waiting for a player here
+        // leaves the state machine disabled and lets the TDE camera keep following
+        // its previous/default target during the first frames (or forever in a
+        // scene without a spawned player).
+        if (startMode == CameraMode.FreeCamera)
+        {
+            SetMode(CameraMode.FreeCamera);
+        }
+
+        // Reapply the selected mode after the player is spawned. In free-camera
+        // mode this also turns the newly spawned character into AI and cancels
+        // any follow event raised by the spawning pipeline.
         StartCoroutine(InitializeAfterPlayerSpawn());
     }
 

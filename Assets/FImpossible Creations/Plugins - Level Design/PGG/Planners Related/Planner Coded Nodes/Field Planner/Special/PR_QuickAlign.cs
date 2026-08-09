@@ -21,6 +21,7 @@ namespace FIMSpace.Generating.Planning.PlannerNodes.Field.Special
         [Space(3)]
         [Tooltip("If 'Collision With' left empty or -1 then colliding with every field in the current plan stage")]
         [Port(EPortPinType.Input)] public PGGPlannerPort CollisionWith;
+        [Tooltip("Additional push-out in cell units. A positive value is also reserved as horizontal clearance around the whole field.")]
         [Port(EPortPinType.Input, 1)] public FloatPort ExtraPushOut;
 
         public override void Execute(PlanGenerationPrint print, PlannerResult newResult)
@@ -210,9 +211,72 @@ namespace FIMSpace.Generating.Planning.PlannerNodes.Field.Special
             if (breakOnAnyCollWithMask && checker.IsCollidingWith(fullMask))
                 return new Bounds(Vector3.zero, Vector3.one * float.MaxValue);
 
+            // ExtraPushOut was originally checked only in the alignment direction. For rooms
+            // this could leave their side or corner directly touching another field. Reserve
+            // the same world-space gap around the complete horizontal perimeter instead.
+            float horizontalClearance = Mathf.Max(0f, pushOutDistance) * checker.ScaleV3(dir.V3IntToV3()).magnitude;
+            if (breakOnAnyCollWithMask && horizontalClearance > 0f)
+                if (!HasHorizontalClearance(checker, fullMask, horizontalClearance))
+                    return new Bounds(Vector3.zero, Vector3.one * float.MaxValue);
+
             Bounds r = new Bounds(printBounds.center, printBounds.size);
             r.Encapsulate(checker.GetFullBoundsWorldSpace());
             return r;
+        }
+
+        bool HasHorizontalClearance(CheckerField3D checker, List<CheckerField3D> collisionMasks, float minimumClearance)
+        {
+            const float tolerance = 0.001f;
+            float minimumGap = Mathf.Max(0f, minimumClearance - tolerance);
+            Vector3 checkerCellSize = GetWorldCellSize(checker);
+            Bounds checkerBounds = checker.GetFullBoundsWorldSpace();
+            checkerBounds.Expand(new Vector3(minimumClearance * 2f, 0f, minimumClearance * 2f));
+
+            for (int maskIndex = 0; maskIndex < collisionMasks.Count; maskIndex++)
+            {
+                CheckerField3D other = collisionMasks[maskIndex];
+                if (other == null || other == checker || other.ChildPositionsCount == 0) continue;
+
+                Bounds otherBounds = other.GetFullBoundsWorldSpace();
+                if (!checkerBounds.Intersects(otherBounds)) continue;
+
+                Vector3 otherCellSize = GetWorldCellSize(other);
+
+                for (int myCellIndex = 0; myCellIndex < checker.ChildPositionsCount; myCellIndex++)
+                {
+                    Vector3 myPosition = checker.GetWorldPos(myCellIndex);
+
+                    for (int otherCellIndex = 0; otherCellIndex < other.ChildPositionsCount; otherCellIndex++)
+                    {
+                        Vector3 otherPosition = other.GetWorldPos(otherCellIndex);
+
+                        float halfHeight = (checkerCellSize.y + otherCellSize.y) * 0.5f;
+                        if (Mathf.Abs(myPosition.y - otherPosition.y) >= halfHeight - tolerance) continue;
+
+                        float gapX = Mathf.Abs(myPosition.x - otherPosition.x) - (checkerCellSize.x + otherCellSize.x) * 0.5f;
+                        float gapZ = Mathf.Abs(myPosition.z - otherPosition.z) - (checkerCellSize.z + otherCellSize.z) * 0.5f;
+
+                        // Both axes inside the expanded cell footprint means there is not
+                        // enough room for the wall, including at room corners.
+                        if (gapX < minimumGap && gapZ < minimumGap)
+                            return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        Vector3 GetWorldCellSize(CheckerField3D checker)
+        {
+            Vector3 xAxis = checker.RootRotation * new Vector3(checker.RootScale.x, 0f, 0f);
+            Vector3 yAxis = checker.RootRotation * new Vector3(0f, checker.RootScale.y, 0f);
+            Vector3 zAxis = checker.RootRotation * new Vector3(0f, 0f, checker.RootScale.z);
+
+            return new Vector3(
+                Mathf.Abs(xAxis.x) + Mathf.Abs(yAxis.x) + Mathf.Abs(zAxis.x),
+                Mathf.Abs(xAxis.y) + Mathf.Abs(yAxis.y) + Mathf.Abs(zAxis.y),
+                Mathf.Abs(xAxis.z) + Mathf.Abs(yAxis.z) + Mathf.Abs(zAxis.z));
         }
 
         float GetBoundsSize(Bounds b)
